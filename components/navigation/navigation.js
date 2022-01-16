@@ -1,26 +1,45 @@
 import Link from "next/link"
+import React, { useState, useRef } from "react"
 
 import Logo from "@components/logo"
 import { styled } from "stitches.config"
 
 export default function Navigation() {
+  const navigation = useRef()
+  const [navState, setNavState] = useState(false)
+
+  const toggleNavState = () => {
+    setNavState(!navState)
+  }
+
   return (
     <Nav>
       <Background />
-      <BackgroundBump width="400" height="20" fill="none" viewBox="0 0 400 20">
+      <BackgroundBump width="400" height="20" viewBox="0 0 400 20">
         <path
           fill="#fff"
           d="M50 0c99 0 99 18 153.804 18C269 18 269 0 370 0H50z"
         ></path>
       </BackgroundBump>
 
-      <Hamburger></Hamburger>
+      <Hamburger
+        viewBox="0 0 100 100"
+        width="80"
+        onClick={toggleNavState}
+        state={navState === true ? "active" : "inactive"}
+      >
+        <HamburgerTopLine
+          state={navState === true ? "active" : "inactive"}
+          d="M30 33h40s9.044-.655 9.044-8.509-8.024-11.958-14.9-10.859C57.27 14.731 50.009 17.804 50.009 30v42"
+        />
+        <HamburgerBottomLine d="M30 50h40" />
+      </Hamburger>
 
       <LogoWrapper aria-label="Some Pretty Thing Logo">
         <Logo />
       </LogoWrapper>
 
-      <NavLinks>
+      <NavLinks state={navState === true ? "active" : "inactive"}>
         <NavLinksGroup>
           <NavLink>
             <Link href="/" passHref={true}>
@@ -74,7 +93,7 @@ export default function Navigation() {
 const Nav = styled("nav", {
   alignItems: "center",
   display: "flex",
-  position: "relative",
+  position: "fixed",
   left: 0,
   right: 0,
   top: 0,
@@ -97,7 +116,10 @@ const Background = styled("div", {
 })
 
 const BackgroundBump = styled("svg", {
+  display: "none",
+
   "@mediaSm": {
+    display: "block",
     bottom: "-20px",
     content: " ",
     left: 0,
@@ -109,10 +131,59 @@ const BackgroundBump = styled("svg", {
 })
 
 const Hamburger = styled("svg", {
+  height: "5rem",
+  width: "5rem",
+  position: "fixed",
+  right: 0,
+  top: 0,
+  zIndex: 100,
+  cursor: "pointer",
+  strokeDasharray: "40 139",
+  transition: "$transitionBase",
+  userSelect: "none",
+  transform: "translateY(0.5rem)",
+
   "@mediaSm": {
     display: "none",
   },
+
+  variants: {
+    state: {
+      active: {
+        transform: "rotate(45deg)",
+      },
+    },
+  },
 })
+
+const HamburgerTopLine = styled("path", {
+  fill: "none",
+  stroke: "$gray100",
+  strokeLinecap: "square",
+  strokeWidth: "0.25rem",
+  transition: "stroke-dasharray 400ms, stroke-dashoffset 400ms",
+  strokeDasharray: "40 139",
+
+  variants: {
+    state: {
+      active: {
+        strokeDashoffset: "-99px",
+      },
+      inactive: {
+        strokeDashoffset: "0px",
+      },
+    },
+  },
+})
+
+const HamburgerBottomLine = styled("path", {
+  fill: "none",
+  stroke: "$gray100",
+  strokeLinecap: "square",
+  strokeWidth: "0.25rem",
+  transition: "stroke-dasharray 400ms, stroke-dashoffset 400ms",
+})
+
 const LogoWrapper = styled("a", {
   lineHeight: "0",
   padding: "0 1rem",
@@ -128,7 +199,7 @@ const NavLinks = styled("div", {
   background: "$red20",
   flexDirection: "column",
   height: "100vh",
-  padding: "0 0 5rem 0",
+  padding: "5rem 0 0 0",
   position: "absolute",
   left: 0,
   right: 0,
@@ -149,7 +220,13 @@ const NavLinks = styled("div", {
   variants: {
     state: {
       active: { display: "flex" },
-      inactive: { display: "none" },
+      inactive: {
+        display: "none",
+
+        "@mediaSm": {
+          display: "flex",
+        },
+      },
     },
   },
 })
