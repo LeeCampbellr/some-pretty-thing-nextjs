@@ -1,15 +1,41 @@
+import React from "react"
 import Head from "next/head"
 import Image from "next/image"
+import { gql } from "graphql-request"
 
-import { styled } from "stitches.config"
-import { request } from "@lib/craft"
+import { request, POST_FRAGMENT } from "@utils/craft"
 
-const HOME_QUERY = `
+import Header from "@sections/indexHeader"
+import RecentPosts from "@sections/indexRecent"
+
+const HOME_QUERY = gql`
   query HomePage {
-    entry {
-      title
+    featuredPost: entry {
+      ... on posts_post_Entry {
+        id
+        title
+        slug
+        postDate
+        excerpt
+        categories {
+          title
+          slug
+        }
+        homeHeaderLayout
+        featuredImage {
+          url
+          title
+          width
+          height
+        }
+      }
+    }
+    recentPosts: entries(limit: 5, offset: 1) {
+      ...PostFragment
     }
   }
+
+  ${POST_FRAGMENT}
 `
 
 export async function getStaticProps() {
@@ -22,21 +48,12 @@ export async function getStaticProps() {
 }
 
 export default function Home({ data }) {
+  const { featuredPost, recentPosts } = data
+
   return (
-    <Header>
-      <Heading>testing homepage</Heading>
-      <h6>{data.entry.title}</h6>
-    </Header>
+    <React.Fragment>
+      <Header post={featuredPost} />
+      <RecentPosts posts={recentPosts} />
+    </React.Fragment>
   )
 }
-
-const Header = styled("div", {
-  background: "$red20",
-  height: "100vh",
-  width: "100vw",
-})
-
-const Heading = styled("h1", {
-  fontFamily: "$heading",
-  fontSize: "$6",
-})

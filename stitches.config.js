@@ -1,4 +1,4 @@
-import { createStitches } from "@stitches/react";
+import { createStitches } from "@stitches/react"
 
 export const { styled, getCssText } = createStitches({
   theme: {
@@ -39,12 +39,15 @@ export const { styled, getCssText } = createStitches({
       transitionMedium: "all 800ms cubic-bezier(0.49, 0.025, 0.49, 1)",
       transitionLong: "all 1200ms cubic-bezier(0.49, 0.025, 0.49, 1)",
     },
+    space: {
+      gutter: "2rem",
+    },
   },
   media: {
-    mediaxs: "(min-width: 480px)",
+    mediaXs: "(min-width: 480px)",
     mediaSm: "(min-width: 640px)",
     mediaMd: "(min-width: 768px)",
     mediaLg: "(min-width: 1024px)",
     mediaXl: "(min-width: 1440px)",
   },
-});
+})

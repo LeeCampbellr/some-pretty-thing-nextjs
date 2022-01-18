@@ -1,5 +1,6 @@
-import Layout from "components/layout"
+import Layout from "@components/layout/layout"
 import { globalCss } from "@stitches/react"
+import "@utils/styles.css"
 
 const globalStyles = globalCss({
   "*": {
@@ -17,7 +18,10 @@ const globalStyles = globalCss({
   ul: {
     padding: 0,
   },
-  "@import": ["/font.css", "https://use.typekit.net/nzu8hkq.css"],
+  a: {
+    textDecoration: "none",
+  },
+  "@import": ["https://use.typekit.net/nzu8hkq.css"],
 })
 
 ;<link rel="stylesheet" href="https://use.typekit.net/nzu8hkq.css"></link>
