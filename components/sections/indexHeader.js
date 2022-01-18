@@ -44,7 +44,7 @@ export default function IndexHeader({ post }) {
               </Type>
 
               {categories.map((category, index) => (
-                <Link href={`/category/${category.slug}`}>
+                <Link key={index} href={`/category/${category.slug}`}>
                   <a>
                     <Type
                       html="h6"
