@@ -7,6 +7,7 @@ import { request, POST_FRAGMENT } from "@utils/craft"
 
 import Header from "@sections/indexHeader"
 import RecentPosts from "@sections/indexRecent"
+import Wallflower from "@sections/indexWallflower"
 
 const HOME_QUERY = gql`
   query HomePage {
@@ -54,6 +55,7 @@ export default function Home({ data }) {
     <React.Fragment>
       <Header post={featuredPost} />
       <RecentPosts posts={recentPosts} />
+      <Wallflower />
     </React.Fragment>
   )
 }
