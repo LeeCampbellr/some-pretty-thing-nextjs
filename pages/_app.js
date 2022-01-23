@@ -24,7 +24,6 @@ const globalStyles = globalCss({
   "@import": ["https://use.typekit.net/nzu8hkq.css"],
 })
 
-;<link rel="stylesheet" href="https://use.typekit.net/nzu8hkq.css"></link>
 function MyApp({ Component, pageProps }) {
   globalStyles()
   return (

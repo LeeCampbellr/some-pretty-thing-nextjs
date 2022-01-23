@@ -27,7 +27,7 @@ export default function IndexRecent({ posts }) {
 const Posts = styled("div", {
   display: "grid",
   gridTemplateColumns: "1fr",
-  gap: "$gutter",
+  gap: "var(--spacingGutter)",
   gridAutoRows: "minmax(min-content, max-content)",
 
   "@mediaSm": {
