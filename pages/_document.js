@@ -1,43 +1,38 @@
-import React from "react"
-import NextDocument, { Html, Head, Main, NextScript } from "next/document"
-import Link from "next/link"
-import { getCssText } from "stitches.config"
+import Document, { Head, Html, Main, NextScript } from "next/document"
+// Import styled components ServerStyleSheet
 import { ServerStyleSheet } from "styled-components"
 
-export default class Document extends NextDocument {
-  static getInitialProps({ renderPage }) {
+export default class MyDocument extends Document {
+  static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet()
-    const page = renderPage(
-      (App) => (props) => sheet.collectStyles(<App {...props} />)
-    )
-    const styleTags = sheet.getStyleElement()
-    return { ...page, styleTags }
+    const originalRenderPage = ctx.renderPage
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+        })
+
+      const initialProps = await Document.getInitialProps(ctx)
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
+      }
+    } finally {
+      sheet.seal()
+    }
   }
 
   render() {
     return (
       <Html lang="en">
-        <Head>
-          <style
-            id="stitches"
-            dangerouslySetInnerHTML={{ __html: getCssText() }}
-          />
-          <link
-            rel="preload"
-            href="/fonts/1098_display.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/fonts/1098_display.woff"
-            as="font"
-            type="font/woff"
-            crossOrigin="anonymous"
-          />
-          {this.props.styleTags}
-        </Head>
+        <Head>{this.props.styleTags}</Head>
         <body>
           <Main />
           <NextScript />

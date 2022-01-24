@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import { styled } from "stitches.config"
 import { Type } from "@components/type"
-import Date from "@components/date"
+import Date from "@utils/date"
 
 export default function PostCard({ post }) {
   const { slug, featuredImage, postDate, title, excerpt, categories } = post

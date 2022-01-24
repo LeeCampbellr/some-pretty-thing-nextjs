@@ -1,49 +1,59 @@
-import Link from "next/link"
 import React from "react"
+import Link from "next/link"
+import styled from "styled-components"
+import { Heading } from "@components/type"
 
-import { Type } from "@components/type"
-import { styled } from "stitches.config"
+export const Button = styled.button`
+  appearance: none;
+  background-color: var(--red40);
+  border: none;
+  color: var(--gray100);
+  padding: 0.5rem 2rem;
+  font-family: var(--paragraphFamily);
+  font-size: 0.875rem;
+  letter-spacing: 2px;
+  outline: none;
+  text-align: center;
+  text-transform: uppercase;
+  transition: var(--transitionBase);
+  width: auto;
 
-export const Button = styled("button", {
-  appearance: "none",
-  backgroundColor: "$red40",
-  border: "none",
-  color: "$gray20",
-  padding: "0.5rem 2rem",
-  fontFamily: "$paragraph",
-  fontSize: "0.875rem",
-  letterSpacing: "2px",
-  outline: "none",
-  textAlign: "center",
-  textTransform: "uppercase",
-  transition: "$transitionBase",
-  width: "auto",
+  &:hover {
+    background-color: var(--red60);
+    filter: brightness(105%);
+  }
 
-  "&:hover": {
-    backgroundColor: "$red60",
-    filter: "brightness(105%)",
-  },
+  &:focus {
+    outline: none;
+  }
+`
 
-  "&:focus": {
-    outline: "none",
-  },
-})
+export const LinkInternal = styled(Link)`
+  color: var(--gray100);
+  display: inline-block;
+  font-family: var(--paragraphFamily);
+  font-size: 0.95rem;
+  font-weight: var(--paragraphWeight);
+  line-height: var(--paragraphLeading);
+  position: relative;
+`
 
-export const TextLink = styled("a", {
-  color: "$gray100",
-  display: "inline-block",
-  fontFamily: "$paragraph",
-  fontSize: "1rem",
-  fontWeight: "400",
-  position: "relative",
-})
+export const LinkExternal = styled.a`
+  color: var(--gray100);
+  display: inline-block;
+  font-family: var(--paragraphFamily);
+  font-size: 0.95rem;
+  font-weight: var(--paragraphWeight);
+  line-height: var(--paragraphLeading);
+  position: relative;
+`
 
-const Arrow = ({ text, ...props }) => {
+const Arrow = ({ to, text, light, ...props }) => {
   return (
-    <div {...props}>
-      <Type html="h6" size="sh" noMargin>
+    <Link to={to} {...props}>
+      <Heading html="h6" level="h6" noMargin lowerCase>
         {text}
-      </Type>
+      </Heading>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -54,111 +64,144 @@ const Arrow = ({ text, ...props }) => {
         <path
           stroke="#111"
           d="M0 5.026h24m0 0c-3.5-.571-7-1.74-9-4.026m9 4.026c-3.5.572-7 1.688-9 3.974"
-        />
+        ></path>
       </svg>
-    </div>
-  )
-}
-
-export const LinkArrow = styled(Arrow, {
-  alignItems: "center",
-  display: "inline-flex",
-  flexDirection: "",
-  marginTop: "1rem",
-  position: "relative",
-  transition: "$transitionBase",
-
-  "&:before": {
-    background: "$red20",
-    borderRadius: "2rem",
-    bottom: 0,
-    top: 0,
-    right: "-0.4rem",
-    content: " ",
-    height: "1.5rem",
-    width: "1.5rem",
-    margin: "auto",
-    position: "absolute",
-    transform: "scale(0)",
-    transition: "$transitionBase",
-    zIndex: 1,
-  },
-
-  svg: {
-    position: "relative",
-    display: "inline-block",
-    marginLeft: "0.675rem",
-    zIndex: 2,
-
-    path: {
-      stroke: "$gray100",
-      transition: "$transitionBase",
-    },
-  },
-
-  "&:hover": {
-    "&:before": { transform: "scale(1)" },
-  },
-})
-
-const Section = ({ to, text, ...props }) => {
-  return (
-    <Link href={to}>
-      <a {...props}>
-        <Background />
-        <Type html="h6" size="h6" noMargin>
-          {text}
-        </Type>
-        <svg width="24" height="10" fill="none" viewBox="0 0 24 10">
-          <path d="M0 5.026h24m0 0c-3.5-.571-7-1.74-9-4.026m9 4.026c-3.5.572-7 1.688-9 3.974" />
-        </svg>
-      </a>
     </Link>
   )
 }
 
-const Background = styled("div", {
-  backgroundColor: "$red20",
-  bottom: 0,
-  left: 0,
-  height: "100%",
-  width: "100%",
-  position: "absolute",
-  transform: "scaleY(0)",
-  transformOrigin: "bottom",
-  transition: "$transitionBase",
-  zIndex: "-1",
-})
+export const LinkArrow = styled(Arrow)`
+  align-items: center;
+  display: inline-flex;
+  flex-direction: ${(props) => (props.reverse ? "row-reverse" : "row")};
+  margin-top: 2rem;
+  position: relative;
+  transition: var(--transitionBase);
 
-export const LinkSection = styled(Section, {
-  alignItems: "center",
-  borderBottom: "1px solid $gray20",
-  display: "flex",
-  flexDirection: "row",
-  height: "5rem",
-  justifyContent: "center",
-  position: "relative",
-  transition: "$transitionBase",
-  width: "100%",
+  &:before {
+    background-color: ${(props) =>
+      props.light ? "var(--red40)" : "var(--red20)"};
+    border-radius: 2rem;
+    bottom: 0;
+    content: "";
+    height: 24px;
+    margin: auto;
+    position: absolute;
+    ${(props) => (props.reverse ? "left: -0.4rem;" : "right: -0.4rem;")};
+    top: 0;
+    transform: scale(0);
+    transition: var(--transitionBase);
+    width: 24px;
+    z-index: -1;
+  }
 
-  svg: {
-    marginLeft: "1rem",
-  },
+  h6 {
+    color: ${(props) => (props.light ? "var(--gray20)" : "var(--gray80)")};
+    margin: 0;
+  }
 
-  path: {
-    stroke: "$gray60",
-    transition: "$transitionBase",
-  },
+  svg {
+    display: inline-block;
+    ${(props) =>
+      props.reverse ? "margin-right: 0.675rem;" : "margin-left: 0.675rem;"};
+    transform: ${(props) => (props.reverse ? "rotate(180deg)" : "intial")};
 
-  "&:hover": {
-    borderColor: "$red20",
+    path {
+      stroke: ${(props) => (props.light ? "var(--gray20)" : "var(--gray80)")};
+      transition: var(--transitionBase);
+    }
+  }
 
-    path: {
-      stroke: "$gray100",
-    },
+  &:hover {
+    &:before {
+      transform: scale(1);
+    }
 
-    [`${Background}`]: {
-      transform: "scaleY(1)",
-    },
-  },
-})
+    h6 {
+      color: ${(props) => (props.light ? "var(--gray00)" : "var(--gray100)")};
+    }
+    svg path {
+      stroke: ${(props) => (props.light ? "var(--gray00)" : "var(--gray100)")};
+    }
+  }
+`
+
+const Section = ({ linkSection, link, text, ...props }) => (
+  <SectionLink to={link} className={`a-sectionLink -${linkSection}`}>
+    <Background></Background>
+    <Heading html="h6" level="h6" noMargin lowerCase>
+      {text}
+    </Heading>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="10"
+      fill="none"
+      viewBox="0 0 24 10"
+    >
+      <path
+        stroke="#111"
+        d="M0 5.026h24m0 0c-3.5-.571-7-1.74-9-4.026m9 4.026c-3.5.572-7 1.688-9 3.974"
+      ></path>
+    </svg>
+  </SectionLink>
+)
+
+const Background = styled.div`
+  background-color: var(--red20);
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: var(--transitionBase);
+  width: 100%;
+  z-index: var(--zLost);
+`
+
+const SectionLink = styled(Link)`
+  align-items: center;
+  border-bottom: var(--borderBase);
+  display: flex;
+  flex-direction: row;
+  height: 80px;
+  justify-content: center;
+  position: relative;
+  transition: var(--transitionBase);
+  width: 100%;
+
+  h6 {
+    color: var(--gray60);
+    transform: translateY(0.5px);
+  }
+
+  svg {
+    margin-left: 1rem;
+
+    path {
+      stroke: var(--gray60);
+      transition: var(--transitionBase);
+    }
+  }
+
+  &:hover {
+    border-color: var(--red20);
+
+    h6 {
+      color: var(--gray100);
+    }
+
+    svg {
+      path {
+        stroke: var(--gray100);
+      }
+    }
+
+    ${Background} {
+      transform: scaleY(1);
+    }
+  }
+`
+
+export const LinkSection = styled(Section)``
