@@ -1,3 +1,5 @@
+@import "https://use.typekit.net/nzu8hkq.css";
+
 @font-face {
   font-family: "1089_display";
   src: url("/public/fonts/1098_display.woff2") format("woff2"),
@@ -6,8 +8,6 @@
   font-style: normal;
   font-display: swap;
 }
-
-@import "https://use.typekit.net/nzu8hkq.css";
 
 * {
   margin: 0;
@@ -59,6 +59,7 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
+  position: relative;
 }
 
 :root {

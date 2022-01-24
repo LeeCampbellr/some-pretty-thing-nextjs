@@ -55,10 +55,12 @@ const Navigation = () => {
           <path d="M30 50h40" className="line middle" />
         </svg>
       </Hamburger>
-      <NavLogo href="/" aria-label="Some Pretty Thing Logo">
-        <a>
-          <Logo />
-        </a>
+      <NavLogo>
+        <Link href="/" aria-label="Some Pretty Thing Logo">
+          <a>
+            <Logo />
+          </a>
+        </Link>
       </NavLogo>
       <NavigationLinks flex className={nav === true ? "-active" : ""}>
         <ul>
@@ -116,13 +118,13 @@ const Navigation = () => {
         <ul>
           <NavLink>
             <ScrollLink
-              href="newsletter"
+              to="newsletter"
               smooth={true}
               spy={true}
               offset={-200}
               className="-newsletter"
             >
-              <a>Newsletter</a>
+              Newsletter
             </ScrollLink>
           </NavLink>
           <NavLink>
@@ -132,7 +134,7 @@ const Navigation = () => {
               onClick={toggleAboutNav}
               href="/about"
             >
-              <a>About</a>
+              About
             </Link>
           </NavLink>
           <NavLink className="-hide">
@@ -260,7 +262,7 @@ const Hamburger = styled.div`
   }
 `
 
-const NavLogo = styled(Link)`
+const NavLogo = styled.div`
   line-height: 0;
   padding: 0 1rem;
   z-index: var(--zTest);
