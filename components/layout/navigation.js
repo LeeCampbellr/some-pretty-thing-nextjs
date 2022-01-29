@@ -10,7 +10,7 @@ import {
 
 import Logo from "@components/logo"
 import { Container } from "@components/layout"
-// import NavigationAbout from
+import NavigationAbout from "@components/layout/navigationAbout"
 import { media } from "@utils/media"
 
 const Navigation = () => {
@@ -39,7 +39,7 @@ const Navigation = () => {
 
   return (
     <NavigationContainer ref={navigation}>
-      {/* <NavigationAbout show={aboutNav} /> */}
+      <NavigationAbout show={aboutNav} />
       <NavigationBackground />
       <Hamburger>
         <svg
@@ -65,52 +65,27 @@ const Navigation = () => {
       <NavigationLinks flex className={nav === true ? "-active" : ""}>
         <ul>
           <NavLink>
-            <Link
-              activeClassName="-active"
-              href="/christmas"
-              onClick={resetScroll}
-            >
-              <a>Holiday</a>
-            </Link>
-          </NavLink>
-          <NavLink>
-            <Link
-              activeClassName="-active"
-              href="/lifestyle"
-              onClick={resetScroll}
-            >
+            <Link href="/lifestyle" onClick={resetScroll}>
               <a>Lifestyle</a>
             </Link>
           </NavLink>
           <NavLink>
-            <Link
-              activeClassName="-active"
-              href="/fashion"
-              onClick={resetScroll}
-            >
+            <Link href="/fashion" onClick={resetScroll}>
               <a>Fashion</a>
             </Link>
           </NavLink>
           <NavLink>
-            <Link
-              activeClassName="-active"
-              href="/beauty"
-              onClick={resetScroll}
-            >
+            <Link href="/beauty" onClick={resetScroll}>
               <a>Beauty</a>
             </Link>
           </NavLink>
           <NavLink>
-            <Link activeClassName="-active" href="/home" onClick={resetScroll}>
+            <Link href="/home" onClick={resetScroll}>
               <a>Home</a>
             </Link>
           </NavLink>
           <NavLink>
-            <Link
-              activeClassName="-active"
-              href="/travel"
-              onClick={resetScroll}
-            >
+            <Link href="/travel" onClick={resetScroll}>
               <a>Travel</a>
             </Link>
           </NavLink>
@@ -128,14 +103,12 @@ const Navigation = () => {
             </ScrollLink>
           </NavLink>
           <NavLink>
-            <Link
-              activeClassName="-active"
+            <a
               className={aboutNav === true ? "active" : ""}
               onClick={toggleAboutNav}
-              href="/about"
             >
               About
-            </Link>
+            </a>
           </NavLink>
           <NavLink className="-hide">
             <Link onClick={resetScroll} href="/about/press">
@@ -326,6 +299,7 @@ const NavLink = styled.li`
 
   a {
     color: var(--paragraphColor);
+    cursor: pointer;
     display: inline-flex;
     align-items: center;
     font-family: var(--paragraphFamily);
