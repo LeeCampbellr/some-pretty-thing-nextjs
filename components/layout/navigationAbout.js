@@ -181,13 +181,14 @@ const AboutLink = styled.a`
   }
 `
 
-const Copy = styled.div`
+const Copy = styled.span`
   display: inline-block;
   position: relative;
 `
 
-const EmailLink = styled.p`
+const EmailLink = styled.span`
   display: inline-block;
+  color: var(--red100);
 
   &:hover {
     cursor: pointer;
@@ -195,7 +196,7 @@ const EmailLink = styled.p`
   }
 `
 
-const Message = styled.h6`
+const Message = styled.span`
   align-items: center;
   background-color: var(--gray100);
   bottom: 0;

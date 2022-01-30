@@ -50,8 +50,8 @@ export const LinkExternal = styled.a`
 
 const Arrow = ({ to, text, light, ...props }) => {
   return (
-    <Link to={to} {...props}>
-      <Heading html="h6" level="h6" noMargin lowerCase>
+    <div {...props}>
+      <Heading html="h6" level="h6" noMargin lower="true">
         {text}
       </Heading>
       <svg
@@ -66,12 +66,13 @@ const Arrow = ({ to, text, light, ...props }) => {
           d="M0 5.026h24m0 0c-3.5-.571-7-1.74-9-4.026m9 4.026c-3.5.572-7 1.688-9 3.974"
         ></path>
       </svg>
-    </Link>
+    </div>
   )
 }
 
 export const LinkArrow = styled(Arrow)`
   align-items: center;
+  cursor: pointer;
   display: inline-flex;
   flex-direction: ${(props) => (props.reverse ? "row-reverse" : "row")};
   margin-top: 2rem;

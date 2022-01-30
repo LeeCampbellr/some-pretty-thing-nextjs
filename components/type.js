@@ -50,7 +50,7 @@ export const Heading = styled(HeadingWrapper)`
   }};
   text-decoration: none;
   text-transform: ${(props) =>
-    props.lowerCase ? "initial" : "var(--headingTransform)"};
+    props.lower ? "initial" : "var(--headingTransform)"};
   text-align: ${(props) => {
     if (props.center) return "center"
     else return "left"
