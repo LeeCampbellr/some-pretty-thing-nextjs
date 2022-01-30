@@ -81,7 +81,7 @@ const Footer = () => (
       <Secondary flex spaceBetween alignCenter>
         <SocialLinks />
         <Paragraph level="sm" noMargin>
-          All rights reserved — 2020 © Some Pretty Thing
+          All rights reserved — 2022 © Some Pretty Thing
         </Paragraph>
       </Secondary>
     </Section>
