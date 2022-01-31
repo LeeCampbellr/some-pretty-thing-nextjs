@@ -128,24 +128,26 @@ export const LinkArrow = styled(Arrow)`
 `
 
 const Section = ({ linkSection, link, text, ...props }) => (
-  <SectionLink to={link} className={`a-sectionLink -${linkSection}`}>
-    <Background></Background>
-    <Heading html="h6" level="h6" noMargin lowerCase>
-      {text}
-    </Heading>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="10"
-      fill="none"
-      viewBox="0 0 24 10"
-    >
-      <path
-        stroke="#111"
-        d="M0 5.026h24m0 0c-3.5-.571-7-1.74-9-4.026m9 4.026c-3.5.572-7 1.688-9 3.974"
-      ></path>
-    </svg>
-  </SectionLink>
+  <Link href={link}>
+    <SectionLink className={`a-sectionLink -${linkSection}`}>
+      <Background></Background>
+      <Heading html="h6" level="h6" noMargin lowerCase>
+        {text}
+      </Heading>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="10"
+        fill="none"
+        viewBox="0 0 24 10"
+      >
+        <path
+          stroke="#111"
+          d="M0 5.026h24m0 0c-3.5-.571-7-1.74-9-4.026m9 4.026c-3.5.572-7 1.688-9 3.974"
+        ></path>
+      </svg>
+    </SectionLink>
+  </Link>
 )
 
 const Background = styled.div`
@@ -161,9 +163,10 @@ const Background = styled.div`
   z-index: var(--zLost);
 `
 
-const SectionLink = styled(Link)`
+const SectionLink = styled.a`
   align-items: center;
   border-bottom: var(--borderBase);
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   height: 80px;
@@ -175,6 +178,7 @@ const SectionLink = styled(Link)`
   h6 {
     color: var(--gray60);
     transform: translateY(0.5px);
+    text-transform: capitalize;
   }
 
   svg {
