@@ -4,10 +4,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard"
 
 import Image from "next/image"
 import Link from "next/link"
-import aboutImage from "public/images/nav/about.png"
-import faqImage from "public/images/nav/faq.png"
-import pressImage from "public/images/nav/press.png"
-import Signature from "public/images/signature.svg"
+import Signature from "assets/signature.svg"
 
 import { Container } from "@components/layout"
 import { Heading, Paragraph } from "@components/type"
@@ -53,7 +50,11 @@ const NavigationAbout = ({ show }) => {
       <Links>
         <Link href="/about">
           <AboutLink>
-            <Image src={aboutImage} layout="fill" objectFit="cover" />
+            <Image
+              src="/images/nav/about.png"
+              layout="fill"
+              objectFit="cover"
+            />
 
             <Heading as="h4" level="h4">
               About
@@ -62,7 +63,7 @@ const NavigationAbout = ({ show }) => {
         </Link>
         <Link href="/about/faq">
           <AboutLink>
-            <Image src={faqImage} layout="fill" objectFit="cover" />
+            <Image src="/images/nav/faq.png" layout="fill" objectFit="cover" />
             <Heading as="h4" level="h4">
               Interview w/ Emily
             </Heading>
@@ -70,7 +71,11 @@ const NavigationAbout = ({ show }) => {
         </Link>
         <Link href="/about/press">
           <AboutLink>
-            <Image src={pressImage} layout="fill" objectFit="cover" />
+            <Image
+              src="/images/nav/press.png"
+              layout="fill"
+              objectFit="cover"
+            />
             <Heading as="h4" level="h4">
               Press
             </Heading>

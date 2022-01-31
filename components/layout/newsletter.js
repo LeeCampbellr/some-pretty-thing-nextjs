@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react"
 import styled from "styled-components"
 
-import Signature from "/public/images/signature.svg"
+import Signature from "assets/signature.svg"
 import Input from "@components/input"
 import { Button } from "@components/links"
 import { Section } from "@components/layout"

@@ -7,7 +7,7 @@ import { Container, Section } from "@components/layout"
 import { Paragraph, Heading } from "@components/type"
 import SocialLinks from "@components/socialLinks"
 
-import WallflowerLogo from "public/images/logoWallflower.svg"
+import WallflowerLogo from "assets/logoWallflower.svg"
 
 const Footer = () => (
   <FooterWrapper>

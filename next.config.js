@@ -10,7 +10,7 @@ module.exports = withReactSvg({
     includePaths: [path.join(__dirname, "utils")],
   },
 
-  include: path.resolve(__dirname, "public/images"),
+  include: path.resolve(__dirname, "assets"),
   webpack(config, options) {
     return config
   },

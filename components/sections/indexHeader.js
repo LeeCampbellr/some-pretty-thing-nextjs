@@ -12,7 +12,6 @@ import { media } from "@utils/media"
 const SectionHeader = ({ post }) => {
   const featured = post.homeHeaderLayout === "featured" ? true : false
 
-  console.log(post.id)
   return (
     <header>
       <Link href={`/${post.slug}`}>
