@@ -22,6 +22,7 @@ const SectionHeader = ({ post }) => {
               alt={post.featuredImage[0].title}
               layout="fill"
               objectFit="cover"
+              priority
             />
           </ImageWrapper>
           <Content>

@@ -9,6 +9,7 @@ export const HeadingWrapper = ({
   strong,
   noMargin,
   light,
+  lower,
   center,
   title,
   ...props

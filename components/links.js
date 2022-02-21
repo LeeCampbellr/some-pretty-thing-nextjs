@@ -131,7 +131,7 @@ const Section = ({ linkSection, link, text, ...props }) => (
   <Link href={link}>
     <SectionLink className={`a-sectionLink -${linkSection}`}>
       <Background></Background>
-      <Heading html="h6" level="h6" noMargin lowerCase>
+      <Heading html="h6" level="h6" noMargin lower>
         {text}
       </Heading>
       <svg

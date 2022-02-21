@@ -8,6 +8,9 @@ import { request, POST_FRAGMENT } from "@utils/craft"
 import Header from "@sections/indexHeader"
 import RecentPosts from "@sections/indexRecent"
 import Wallflower from "@sections/indexWallflower"
+import HomeSection from "@sections/indexHome"
+import Travel from "@sections/indexTravel"
+import Fashion from "@sections/indexFashion"
 
 const HOME_QUERY = gql`
   query HomePage {
@@ -34,6 +37,30 @@ const HOME_QUERY = gql`
     recentPosts: entries(limit: 5, offset: 1) {
       ...PostFragment
     }
+    homePosts: entries(
+      offset: 0
+      limit: 3
+      sectionId: "10"
+      categories: "132"
+    ) {
+      ...PostFragment
+    }
+    travelPosts: entries(
+      offset: 0
+      limit: 10
+      sectionId: "10"
+      categories: "133"
+    ) {
+      ...PostFragment
+    }
+    fashionPosts: entries(
+      offset: 0
+      limit: 3
+      sectionId: "10"
+      categories: "37"
+    ) {
+      ...PostFragment
+    }
   }
 
   ${POST_FRAGMENT}
@@ -49,13 +76,17 @@ export async function getStaticProps() {
 }
 
 export default function Home({ data }) {
-  const { featuredPost, recentPosts } = data
+  const { featuredPost, recentPosts, homePosts, fashionPosts, travelPosts } =
+    data
 
   return (
     <React.Fragment>
       <Header post={featuredPost} />
       <RecentPosts posts={recentPosts} />
       <Wallflower />
+      <HomeSection posts={homePosts} />
+      <Travel posts={travelPosts} />
+      <Fashion posts={fashionPosts} />
     </React.Fragment>
   )
 }
