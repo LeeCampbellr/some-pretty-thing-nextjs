@@ -61,7 +61,7 @@ const SectionPostsTravel = ({ posts }) => {
       <Container md section grid gridTwo containerXLarge alignStart>
         <div>
           <TravelHeading html="h2" level="h2">
-            Oh the places we've been. Travel & city guides
+            Oh the places we&apos;ve been. Travel & city guides
           </TravelHeading>
           <SliderNav>
             <SliderButton
@@ -150,31 +150,35 @@ const SectionPostsTravel = ({ posts }) => {
         </div>
         <TravelLinks>
           <Tlink>
-            <Link href="/a-2-day-guide-to-visiting-atlanta">Atlanta, GA</Link>
-          </Tlink>
-          <Tlink>
-            <Link href="/downtown-seattle-and-pikes-place-market">
-              Seattle, WA
+            <Link href="/a-2-day-guide-to-visiting-atlanta">
+              Atlanta&#44; GA
             </Link>
           </Tlink>
           <Tlink>
-            <Link href="/bonjour-new-york-nyc-diary-day-1/ ">New York, NY</Link>
+            <Link href="/downtown-seattle-and-pikes-place-market">
+              Seattle&#44; WA
+            </Link>
+          </Tlink>
+          <Tlink>
+            <Link href="/bonjour-new-york-nyc-diary-day-1/ ">
+              New York&#44; NY
+            </Link>
           </Tlink>
           <Tlink>
             <Link href="/spending-time-at-hotel-vintage-in-portland/">
-              Portland, OR
+              Portland&#44; OR
             </Link>
           </Tlink>
           <Tlink>
             <Link href="/48-hours-in-charleston-south-carolina/">
-              Charleston, SC
+              Charleston&#44; SC
             </Link>
           </Tlink>
           <Tlink>
-            <Link href="/recapping-nashville/ ">Nashville, TN</Link>
+            <Link href="/recapping-nashville/ ">Nashville&#44; TN</Link>
           </Tlink>
           <Tlink>
-            <Link href="/with-love-from-lake-lure/ ">Lake Lure, NC</Link>
+            <Link href="/with-love-from-lake-lure/ ">Lake Lure&#44; NC</Link>
           </Tlink>
           <Tlink>
             <Link href="/travel">All Travel Posts</Link>

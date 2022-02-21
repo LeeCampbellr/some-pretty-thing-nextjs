@@ -31,7 +31,7 @@ const SectionFashion = ({ posts }) => {
               <Image src={FeaturedImage} objectFit="cover" layout="fill" />
             </ImageWrapper>
             <Heading html="h4" level="h3" center>
-              Discovering Charleston's Cutest Boutique
+              Discovering Charleston&apos;s Cutest Boutique
             </Heading>
             <Heading html="h6" level="sh" center noMargin>
               Read More
