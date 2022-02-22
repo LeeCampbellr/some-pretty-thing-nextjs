@@ -13,7 +13,6 @@ import InfoPost from "@components/post/postInfo"
 import { Section, Container } from "@components/layout"
 import { LinkSection } from "@components/links"
 import { Heading } from "@components/type"
-// import MenuTravel from "@molecules/menus/travel"
 import { media } from "@utils/media"
 
 const SectionPostsTravel = ({ posts }) => {

@@ -11,6 +11,8 @@ import Wallflower from "@sections/indexWallflower"
 import HomeSection from "@sections/indexHome"
 import Travel from "@sections/indexTravel"
 import Fashion from "@sections/indexFashion"
+import Shop from "@sections/indexShop"
+import About from "@sections/indexAbout"
 
 const HOME_QUERY = gql`
   query HomePage {
@@ -87,6 +89,8 @@ export default function Home({ data }) {
       <HomeSection posts={homePosts} />
       <Travel posts={travelPosts} />
       <Fashion posts={fashionPosts} />
+      <Shop />
+      <About />
     </React.Fragment>
   )
 }
