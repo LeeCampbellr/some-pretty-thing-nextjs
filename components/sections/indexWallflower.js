@@ -9,6 +9,15 @@ import { Heading } from "@components/type"
 import { LinkArrow } from "@components/links"
 
 import WallflowerLogo from "assets/logoWallflowerFull.svg"
+import WallflowerOne from "assets/indexWallflower/wf-1.jpg"
+import WallflowerTwo from "assets/indexWallflower/wf-2.jpg"
+import WallflowerThree from "assets/indexWallflower/wf-3.jpg"
+import WallflowerFour from "assets/indexWallflower/wf-4.jpg"
+import WallflowerFive from "assets/indexWallflower/wf-5.jpg"
+import WallflowerSix from "assets/indexWallflower/wf-6.jpg"
+import WallflowerSeven from "assets/indexWallflower/wf-7.jpg"
+import WallflowerEight from "assets/indexWallflower/wf-8.jpg"
+import WallflowerNine from "assets/indexWallflower/wf-9.jpg"
 
 const IndexWallflower = () => {
   const images = useRef(null)
@@ -48,15 +57,15 @@ const IndexWallflower = () => {
       </TitleContainer>
 
       <ImagesContainer ref={images} grid sm>
-        <Image src="/images/wallflower/wf-1.jpg" width="320" height="480" />
-        <Image src="/images/wallflower/wf-2.jpg" width="240" height="360" />
-        <Image src="/images/wallflower/wf-3.jpg" width="320" height="220" />
-        <Image src="/images/wallflower/wf-4.jpg" width="240" height="360" />
-        <Image src="/images/wallflower/wf-5.jpg" width="320" height="480" />
-        <Image src="/images/wallflower/wf-6.jpg" width="240" height="360" />
-        <Image src="/images/wallflower/wf-7.jpg" width="320" height="220" />
-        <Image src="/images/wallflower/wf-8.jpg" width="240" height="360" />
-        <Image src="/images/wallflower/wf-9.jpg" width="320" height="480" />
+        <Image src={WallflowerOne} width="320" height="480" />
+        <Image src={WallflowerTwo} width="240" height="360" />
+        <Image src={WallflowerThree} width="320" height="220" />
+        <Image src={WallflowerFour} width="240" height="360" />
+        <Image src={WallflowerFive} width="320" height="480" />
+        <Image src={WallflowerSix} width="240" height="360" />
+        <Image src={WallflowerSeven} width="320" height="220" />
+        <Image src={WallflowerEight} width="240" height="360" />
+        <Image src={WallflowerNine} width="320" height="480" />
       </ImagesContainer>
 
       <Container containerMedium mg flex alignCenter flexColumn>
