@@ -14,7 +14,7 @@ const BrandBlock = ({ parts }) => {
         id={parts.sectionId}
       >
         {parts.brand.map((node, index) => (
-          <a href={node.linkUrl}>
+          <a href={node.linkUrl} key={index}>
             <img src={node.image[0].url} />
           </a>
         ))}
