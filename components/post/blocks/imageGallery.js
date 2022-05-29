@@ -13,7 +13,7 @@ const ImageGallery = ({ parts }) => {
       id={parts.sectionId}
     >
       {parts.gallery.map((partImage, index) => (
-        <React.Fragment>
+        <React.Fragment key={index}>
           {partImage.kind === "image" ? (
             <Image key={index}>
               <img src={partImage.url} alt={partImage.title} />
