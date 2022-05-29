@@ -7,7 +7,7 @@ const Quote = ({ parts }) => {
   return (
     <Container mg containerMedium section id={parts.sectionId}>
       <Heading html="h2" level="h2">
-        <em>"{parts.quote}"</em>
+        <em>&quot;{parts.quote}&quot;</em>
       </Heading>
     </Container>
   )
