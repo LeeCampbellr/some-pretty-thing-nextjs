@@ -69,18 +69,20 @@ export async function getStaticProps({ params }) {
       }
       postContent: entry(slug: $slug) {
         ... on posts_post_Entry {
-          ...brandBlock
-          ...contentCenter
-          ...contentIntroIndex
-          ...contentIntroShop
-          ...contentIntroSponsored
-          ...contentSplit
-          ...contentSplitImage
-          ...image
-          ...imageGallery
-          ...imageSplit
-          ...quote
-          ...widget
+          postContent {
+            ...brandBlock
+            ...contentCenter
+            ...contentIntroIndex
+            ...contentIntroShop
+            ...contentIntroSponsored
+            ...contentSplit
+            ...contentSplitImage
+            ...image
+            ...imageGallery
+            ...imageSplit
+            ...quote
+            ...widget
+          }
         }
       }
       postSidebar: entry(slug: $slug) {

@@ -5,7 +5,7 @@ export const FRAGMENT_POST_BRAND_BLOCK = gql`
     typeHandle
     id
     brand {
-      ... on craft_brand_BlockType {
+      ... on brand_BlockType {
         id
         image {
           url
@@ -149,7 +149,7 @@ export const FRAGMENT_POST_QUOTE = gql`
 `
 
 export const FRAGMENT_POST_WIDGET = gql`
-  fragment widget on craft_postContent_widget_BlockType {
+  fragment widget on postContent_widget_BlockType {
     typeHandle
     id
     embed
