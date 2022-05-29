@@ -10,6 +10,21 @@ import Sidebar from "@post/postSidebar"
 import { request } from "@utils/craft"
 import { media } from "@utils/media"
 
+import {
+  FRAGMENT_POST_BRAND_BLOCK,
+  FRAGMENT_POST_CONTENT_CENTER,
+  FRAGMENT_POST_CONTENT_INTRO_INDEX,
+  FRAGMENT_POST_CONTENT_INTRO_SHOP,
+  FRAGMENT_POST_CONTENT_INTRO_SPONSORED,
+  FRAGMENT_POST_CONTENT_SPLIT,
+  FRAGMENT_POST_CONTENT_SPLIT_IMAGE,
+  FRAGMENT_POST_IMAGE,
+  FRAGMENT_POST_IMAGE_GALLERY,
+  FRAGMENT_POST_IMAGE_SPLIT,
+  FRAGMENT_POST_WIDGET,
+  FRAGMENT_POST_QUOTE,
+} from "data/postFragments"
+
 export async function getStaticPaths() {
   const ALL_POSTS_QUERY = gql`
     query AllPosts {
@@ -52,6 +67,22 @@ export async function getStaticProps({ params }) {
           }
         }
       }
+      postContent: entry(slug: $slug) {
+        ... on posts_post_Entry {
+          ...brandBlock
+          ...contentCenter
+          ...contentIntroIndex
+          ...contentIntroShop
+          ...contentIntroSponsored
+          ...contentSplit
+          ...contentSplitImage
+          ...image
+          ...imageGallery
+          ...imageSplit
+          ...quote
+          ...widget
+        }
+      }
       postSidebar: entry(slug: $slug) {
         ... on posts_post_Entry {
           slug
@@ -63,6 +94,18 @@ export async function getStaticProps({ params }) {
         }
       }
     }
+    ${FRAGMENT_POST_BRAND_BLOCK},
+    ${FRAGMENT_POST_CONTENT_CENTER},
+    ${FRAGMENT_POST_CONTENT_INTRO_INDEX},
+    ${FRAGMENT_POST_CONTENT_INTRO_SHOP},
+    ${FRAGMENT_POST_CONTENT_INTRO_SPONSORED},
+    ${FRAGMENT_POST_CONTENT_SPLIT},
+    ${FRAGMENT_POST_CONTENT_SPLIT_IMAGE},
+    ${FRAGMENT_POST_IMAGE},
+    ${FRAGMENT_POST_IMAGE_GALLERY},
+    ${FRAGMENT_POST_IMAGE_SPLIT},
+    ${FRAGMENT_POST_WIDGET},
+    ${FRAGMENT_POST_QUOTE},
   `
 
   const data = await request({
@@ -81,7 +124,7 @@ export default function Post({ data }) {
       <Article>
         <Body className="o-postBody">
           <Header postHeader={data.postHeader} />
-          <Content />
+          <Content postBlocks={data.postContent} />
           <Signature />
         </Body>
 
