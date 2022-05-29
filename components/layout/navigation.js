@@ -65,28 +65,28 @@ const Navigation = () => {
       <NavigationLinks flex className={nav === true ? "-active" : ""}>
         <ul>
           <NavLink>
-            <Link href="/lifestyle" onClick={resetScroll}>
-              <a>Lifestyle</a>
+            <Link href="/lifestyle">
+              <a onClick={resetScroll}>Lifestyle</a>
             </Link>
           </NavLink>
           <NavLink>
-            <Link href="/fashion" onClick={resetScroll}>
-              <a>Fashion</a>
+            <Link href="/fashion">
+              <a onClick={resetScroll}>Fashion</a>
             </Link>
           </NavLink>
           <NavLink>
-            <Link href="/beauty" onClick={resetScroll}>
-              <a>Beauty</a>
+            <Link href="/beauty">
+              <a onClick={resetScroll}>Beauty</a>
             </Link>
           </NavLink>
           <NavLink>
-            <Link href="/home" onClick={resetScroll}>
-              <a>Home</a>
+            <Link href="/home">
+              <a onClick={resetScroll}>Home</a>
             </Link>
           </NavLink>
           <NavLink>
-            <Link href="/travel" onClick={resetScroll}>
-              <a>Travel</a>
+            <Link href="/travel">
+              <a onClick={resetScroll}>Travel</a>
             </Link>
           </NavLink>
         </ul>
@@ -111,13 +111,13 @@ const Navigation = () => {
             </a>
           </NavLink>
           <NavLink className="-hide">
-            <Link onClick={resetScroll} href="/about/press">
-              <a>Press</a>
+            <Link href="/about/press">
+              <a onClick={resetScroll}>Press</a>
             </Link>
           </NavLink>
           <NavLink className="-shop">
-            <Link activeClassName="-active" href="/shop" onClick={resetScroll}>
-              <a>Shop</a>
+            <Link activeClassName="-active" href="/shop">
+              <a onClick={resetScroll}>Shop</a>
             </Link>
             <svg
               xmlns="http://www.w3.org/2000/svg"
