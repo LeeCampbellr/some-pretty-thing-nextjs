@@ -3,7 +3,7 @@ import Head from "next/head"
 import Image from "next/image"
 import { gql } from "graphql-request"
 
-import { request, POST_FRAGMENT } from "@utils/craft"
+import { request, POST_FRAGMENT } from "@data/craft"
 
 import Header from "@sections/indexHeader"
 import RecentPosts from "@sections/indexRecent"

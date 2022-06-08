@@ -7,7 +7,7 @@ import Content from "@post/postContent"
 import Signature from "@post/postSignature"
 import Sidebar from "@post/postSidebar"
 
-import { request } from "@utils/craft"
+import { request } from "@data/craft"
 import { media } from "@utils/media"
 
 import {
