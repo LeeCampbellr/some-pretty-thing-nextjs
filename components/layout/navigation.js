@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react"
 import styled from "styled-components"
 import Link from "next/link"
 import { Link as ScrollLink } from "react-scroll"
+import { useRouter } from "next/router"
 import {
   disablePageScroll,
   enablePageScroll,
@@ -14,6 +15,7 @@ import NavigationAbout from "@components/layout/navigationAbout"
 import { media } from "@utils/media"
 
 const Navigation = () => {
+  const router = useRouter()
   const navigation = useRef()
   const [nav, setNav] = useState(false)
   const toggleNav = () => {
@@ -65,28 +67,57 @@ const Navigation = () => {
       <NavigationLinks flex className={nav === true ? "-active" : ""}>
         <ul>
           <NavLink>
-            <Link href="/lifestyle">
-              <a onClick={resetScroll}>Lifestyle</a>
+            <Link href="/category/lifestyle">
+              <a
+                className={
+                  router.asPath == "/category/lifestyle" ? "-active" : ""
+                }
+                onClick={resetScroll}
+              >
+                Lifestyle
+              </a>
             </Link>
           </NavLink>
           <NavLink>
-            <Link href="/fashion">
-              <a onClick={resetScroll}>Fashion</a>
+            <Link href="/category/fashion">
+              <a
+                className={
+                  router.asPath == "/category/fashion" ? "-active" : ""
+                }
+                onClick={resetScroll}
+              >
+                Fashion
+              </a>
             </Link>
           </NavLink>
           <NavLink>
-            <Link href="/beauty">
-              <a onClick={resetScroll}>Beauty</a>
+            <Link href="/category/beauty">
+              <a
+                className={router.asPath == "/category/beauty" ? "-active" : ""}
+                onClick={resetScroll}
+              >
+                Beauty
+              </a>
             </Link>
           </NavLink>
           <NavLink>
-            <Link href="/home">
-              <a onClick={resetScroll}>Home</a>
+            <Link href="/category/home">
+              <a
+                className={router.asPath == "/category/home" ? "-active" : ""}
+                onClick={resetScroll}
+              >
+                Home
+              </a>
             </Link>
           </NavLink>
           <NavLink>
-            <Link href="/travel">
-              <a onClick={resetScroll}>Travel</a>
+            <Link href="/category/travel">
+              <a
+                className={router.asPath == "/category/travel" ? "-active" : ""}
+                onClick={resetScroll}
+              >
+                Travel
+              </a>
             </Link>
           </NavLink>
         </ul>

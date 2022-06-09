@@ -7,6 +7,7 @@ import { Container, Section } from "@components/layout"
 import { Heading } from "@components/type"
 import PostCard from "@components/post/postCard"
 import { media } from "@utils/media"
+import Navigation from "@components/category/navigation"
 
 import { request, POST_FRAGMENT } from "@data/craft"
 
@@ -33,8 +34,37 @@ export async function getStaticProps({ params }) {
   const CATEGORY_QUERY = gql`
     query Category($slug: [String]) {
       category(slug: $slug) {
-        title
-        id
+        ... on postCategories_Category {
+          title
+          id
+          uri
+          slug
+          metaDescription
+          metaTags {
+            title
+          }
+          metaImage {
+            url
+          }
+          children {
+            title
+            uri
+          }
+          parent {
+            title
+            uri
+            children {
+              title
+              uri
+            }
+          }
+          displayTitle
+          featuredContent {
+            url
+            title
+          }
+          featuredContentDisplay
+        }
       }
     }
   `
@@ -68,6 +98,8 @@ export default function Category({ data, posts }) {
       <Heading html="h1" level="huge" center>
         {data.category.title}
       </Heading>
+
+      <Navigation category={data.category} />
 
       <Posts grid>
         {posts.entries.map((post, index) => (
