@@ -48,14 +48,14 @@ export async function getStaticProps({ params }) {
           }
           children {
             title
-            uri
+            slug
           }
           parent {
             title
-            uri
+            slug
             children {
               title
-              uri
+              slug
             }
           }
           displayTitle

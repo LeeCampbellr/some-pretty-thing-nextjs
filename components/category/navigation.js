@@ -18,8 +18,10 @@ const NavigationPostCategory = ({ category }) => {
       {category.children.length > 0 ? (
         <React.Fragment>
           <Category
-            href={`/category/${category.uri}`}
-            className={router.asPath == "/category/lifestyle" ? "-active" : ""}
+            href={`/category/${category.slug}`}
+            className={
+              router.asPath == `/category/${category.slug}` ? "-active" : ""
+            }
           >
             All
           </Category>
@@ -27,7 +29,7 @@ const NavigationPostCategory = ({ category }) => {
           {category.children.map((category, index) => (
             <Category
               key={index}
-              href={`/${category.uri}`}
+              href={`/category/${category.slug}`}
               className={
                 router.asPath == `/category/${category.uri}` ? "-active" : ""
               }
@@ -36,22 +38,16 @@ const NavigationPostCategory = ({ category }) => {
             </Category>
           ))}
         </React.Fragment>
-      ) : category.children.length === 0 ? null : (
+      ) : (
         <React.Fragment>
-          <Category
-            href={`/category/${category.parent.uri}`}
-            className={
-              router.asPath == `/category/${router.asPath}` ? "-active" : ""
-            }
-          >
-            All
-          </Category>
+          <Category href={`/category/${category.parent.slug}`}>All</Category>
+
           {category.parent.children.map((category, index) => (
             <Category
               key={index}
-              href={`/category/${category.uri}`}
+              href={`/category/${category.slug}`}
               className={
-                router.asPath == `/category/${category.uri}` ? "-active" : ""
+                router.asPath == `/category/${category.slug}` ? "-active" : ""
               }
             >
               {category.title}
@@ -59,7 +55,7 @@ const NavigationPostCategory = ({ category }) => {
           ))}
         </React.Fragment>
       )}
-      <DropdownArrow active={cat} />
+      <DropdownArrow active={cat.toString()} />
     </Categories>
   )
 }
@@ -94,7 +90,7 @@ const DropdownArrow = styled(Arrow)`
   top: 1.1rem;
   transition: var(--transitionBase);
   width: 16px;
-  ${(props) => props.active === true && "transform: rotate(180deg);"}
+  ${(props) => props.active === "true" && "transform: rotate(180deg);"}
 
   ${media.md`
     display: none;
@@ -136,12 +132,14 @@ const Category = styled.a`
     }
   }
 
-  &.-active {
-    color: var(--gray--100);
+  ${media.md`
+    &.-active {
+      color: var(--gray--100);
 
-    &:after {
-      opacity: 1;
-      transform: translateY(2px);
+      &:after {
+        opacity: 1;
+        transform: translateY(2px);
+      }
     }
-  }
+  `}
 `
