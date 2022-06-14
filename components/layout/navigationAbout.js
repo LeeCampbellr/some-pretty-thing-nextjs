@@ -138,6 +138,7 @@ const Links = styled.div`
 const AboutLink = styled.a`
   align-items: center;
   background-color: white;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   height: 400px;
