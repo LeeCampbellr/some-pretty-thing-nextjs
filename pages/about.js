@@ -8,6 +8,8 @@ import { request } from "@data/craft"
 import { Container, Section } from "@components/layout"
 import { Heading, Paragraph } from "@components/type"
 import Header from "@components/sections/aboutHeader"
+import Interview from "@components/sections/aboutInterview"
+import Contact from "@components/sections/contact"
 import { media } from "@utils/media"
 
 import BeginningImage from "public/images/about/beginning.jpg"
@@ -68,6 +70,8 @@ export default function About({ data }) {
         </IntroContainer>
       </Section>
 
+      <Interview />
+
       <Section xl>
         <Container containerLarge grid gridTwo alignCenter>
           <ImageWrapper>
@@ -112,6 +116,8 @@ export default function About({ data }) {
           </ContentWrapper>
         </Container>
       </Section>
+
+      <Contact />
     </React.Fragment>
   )
 }
