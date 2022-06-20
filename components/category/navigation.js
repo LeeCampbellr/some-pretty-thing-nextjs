@@ -38,7 +38,7 @@ const NavigationPostCategory = ({ category }) => {
             </Category>
           ))}
         </React.Fragment>
-      ) : (
+      ) : category.parent ? (
         <React.Fragment>
           <Category href={`/category/${category.parent.slug}`}>All</Category>
 
@@ -54,7 +54,7 @@ const NavigationPostCategory = ({ category }) => {
             </Category>
           ))}
         </React.Fragment>
-      )}
+      ) : null}
       <DropdownArrow active={cat.toString()} />
     </Categories>
   )
