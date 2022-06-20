@@ -85,9 +85,9 @@ export default function About({ data }) {
               The start of it all
             </Heading>
             <Paragraph level="md">
-              I've been an avid reader of blogs for the past 10 years and would
-              spend hours soaking in content created by women just like me.
-              After a few years of reading I thought, why can’t I do it too?
+              I&apos;ve been an avid reader of blogs for the past 10 years and
+              would spend hours soaking in content created by women just like
+              me. After a few years of reading I thought, why can’t I do it too?
               Shortly after Some Pretty Thing got its start and it quickly
               became so much more than a hobby.
             </Paragraph>

@@ -11,7 +11,7 @@ const CaseStudies = ({ entries }) => {
     <Section xl full>
       <CaseStudiesContainer grid>
         {entries.map((entry, index) => (
-          <Link href={entry.post[0].slug} passHref>
+          <Link key={index} href={entry.post[0].slug} passHref>
             <CaseStudy>
               <Number level="lg" noMargin>
                 0{entry.sortOrder}
