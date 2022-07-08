@@ -50,7 +50,7 @@ export const LinkExternal = styled.a`
 
 const Arrow = ({ to, text, light, ...props }) => {
   return (
-    <div {...props}>
+    <a href={to} {...props}>
       <Heading html="h6" level="h6" noMargin lower="true">
         {text}
       </Heading>
@@ -66,7 +66,7 @@ const Arrow = ({ to, text, light, ...props }) => {
           d="M0 5.026h24m0 0c-3.5-.571-7-1.74-9-4.026m9 4.026c-3.5.572-7 1.688-9 3.974"
         ></path>
       </svg>
-    </div>
+    </a>
   )
 }
 

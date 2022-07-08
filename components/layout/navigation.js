@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 import Link from "next/link"
 import { Link as ScrollLink } from "react-scroll"
@@ -38,6 +38,11 @@ const Navigation = () => {
     clearQueueScrollLocks(navigation)
     enablePageScroll(navigation)
   }
+
+  useEffect(() => {
+    resetScroll()
+    setAboutNav(false)
+  }, [router.pathname])
 
   return (
     <NavigationContainer ref={navigation}>

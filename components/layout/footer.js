@@ -67,13 +67,15 @@ const Footer = () => (
               <LinkInternal href="/shop">Shop</LinkInternal>
             </NavLink>
             <NavLink>
-              <LinkInternal href="/home-essentials">Home</LinkInternal>
+              <LinkInternal href="/shop/home-essentials">Home</LinkInternal>
             </NavLink>
             <NavLink>
-              <LinkInternal href="/office-&-workspace">Office</LinkInternal>
+              <LinkInternal href="/shop/office-&-workspace">
+                Office
+              </LinkInternal>
             </NavLink>
             <NavLink>
-              <LinkInternal href="/in-my-wardrobe">Wardrobe</LinkInternal>
+              <LinkInternal href="/shop/in-my-wardrobe">Wardrobe</LinkInternal>
             </NavLink>
           </NavGroup>
         </Navigation>

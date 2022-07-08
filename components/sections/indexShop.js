@@ -22,7 +22,7 @@ const SectionShop = () => {
           </Heading>
         </Title>
         <Shop grid gridThree alignCenter lg>
-          <Link href="/home-essentials">
+          <Link href="/shop/home-essentials">
             <ShopCard>
               <Heading html="h2" level="h2">
                 Home Essentials
@@ -34,7 +34,7 @@ const SectionShop = () => {
               </ImageWrapper>
             </ShopCard>
           </Link>
-          <Link href="/office-&-workspace">
+          <Link href="/shop/office-&-workspace">
             <ShopCard>
               <Heading html="h2" level="h2">
                 Office & Workspace
@@ -46,7 +46,7 @@ const SectionShop = () => {
               </ImageWrapper>
             </ShopCard>
           </Link>
-          <Link href="/in-my-wardrobe">
+          <Link href="/shop/in-my-wardrobe">
             <ShopCard>
               <Heading html="h2" level="h2">
                 In My Wardrobe
@@ -60,8 +60,6 @@ const SectionShop = () => {
           </Link>
         </Shop>
       </Section>
-
-      <LinkSection link="/shop" text="Shop All Collections" />
     </Section>
   )
 }
@@ -70,7 +68,7 @@ export default SectionShop
 
 const Title = styled.div`
   margin: 0 auto;
-  max-width: var(--containerMedium);
+  max-width: var(--containerLarge);
 `
 
 const Shop = styled(Container)`
