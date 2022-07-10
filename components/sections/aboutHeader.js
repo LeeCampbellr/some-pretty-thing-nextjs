@@ -82,17 +82,32 @@ const HeaderInterview = () => {
         <Images>
           <ImageOne>
             <ParallaxWrapper ref={parallaxOne}>
-              <Image src={HeaderOne} width="1600" height="2368" />
+              <Image
+                src={HeaderOne}
+                width="1600"
+                height="2368"
+                alt="Emily in white top on fabric background"
+              />
             </ParallaxWrapper>
           </ImageOne>
           <ImageTwo>
             <ParallaxWrapper ref={parallaxTwo}>
-              <Image src={HeaderTwo} width="648" height="924" />
+              <Image
+                src={HeaderTwo}
+                width="648"
+                height="924"
+                alt="Emily in hat on white fabric background"
+              />
             </ParallaxWrapper>
           </ImageTwo>
           <ImageThree>
             <ParallaxWrapper ref={parallaxThree}>
-              <Image src={HeaderThree} width="480" height="718" />
+              <Image
+                src={HeaderThree}
+                width="480"
+                height="718"
+                alt="Closeup of Emily wearing jewelry with olive branch"
+              />
             </ParallaxWrapper>
           </ImageThree>
         </Images>

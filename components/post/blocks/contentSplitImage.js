@@ -1,6 +1,12 @@
 import React from "react"
+import Image from "next/image"
 
-import { Container, Section, Image, Video } from "@components/layout"
+import {
+  Container,
+  Section,
+  Image as ImageWrapper,
+  Video,
+} from "@components/layout"
 
 const ContentSplitImage = ({ parts }) => {
   return (
@@ -17,9 +23,14 @@ const ContentSplitImage = ({ parts }) => {
         <div dangerouslySetInnerHTML={{ __html: parts.paragraph }} />
 
         {parts.image[0].kind === "image" ? (
-          <Image size={parts.imageSize}>
-            <img src={parts.image[0].url} alt={parts.image[0].title} />
-          </Image>
+          <ImageWrapper wsize={parts.imageSize}>
+            <Image
+              src={parts.image[0].url}
+              alt={parts.image[0].title}
+              width={parts.image[0].width}
+              height={parts.image[0].height}
+            />
+          </ImageWrapper>
         ) : (
           <Video size={parts.imageSize}>
             <video autoPlay loop muted playsInline>

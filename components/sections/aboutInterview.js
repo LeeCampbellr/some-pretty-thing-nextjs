@@ -80,7 +80,10 @@ const SectionInterview = () => {
       <Interview grid alignCenter ref={interviewWrapper}>
         <ImageWrapper ref={interviewImage}>
           <div ref={parallax}>
-            <Image src={ImageInterview} />
+            <Image
+              src={ImageInterview}
+              alt="Emily leaning up against desk with books behind her"
+            />
           </div>
         </ImageWrapper>
         <Content>

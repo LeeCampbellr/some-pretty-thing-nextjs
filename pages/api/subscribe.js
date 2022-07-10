@@ -1,6 +1,6 @@
 import fetch from "isomorphic-unfetch"
 
-export default async (req, res) => {
+export default async function Subscribe(req, res) {
   const { email } = req.body
 
   if (!email) {

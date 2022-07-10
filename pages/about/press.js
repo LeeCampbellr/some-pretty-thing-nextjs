@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { gsap } from "gsap"
 import { gql } from "graphql-request"
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
+import { useRouter } from "next/router"
 
 import LineTwo from "assets/elements/line-2.svg"
 import LineThree from "assets/elements/line-3.svg"
@@ -37,6 +38,8 @@ export async function getStaticProps() {
               id
               brands {
                 url
+                width
+                height
               }
             }
           }
@@ -64,6 +67,7 @@ export async function getStaticProps() {
   }
 }
 const Press = ({ data }) => {
+  const router = useRouter()
   const { entry } = data
   const headerParallaxOne = useRef(null)
   const headerParallaxTwo = useRef(null)
@@ -177,7 +181,7 @@ const Press = ({ data }) => {
         y: "0",
       }
     )
-  }, [])
+  }, [router.pathname])
 
   return (
     <>
@@ -229,22 +233,46 @@ const Press = ({ data }) => {
             <Brands>
               <BrandRow ref={brandsOne}>
                 {entry.brands[0].brands.map((brand, index) => (
-                  <img src={brand.url} key={index} alt="brand" />
+                  <Image
+                    src={brand.url}
+                    key={index}
+                    alt="brand"
+                    width={brand.width}
+                    height={brand.height}
+                  />
                 ))}
               </BrandRow>
               <BrandRow ref={brandsTwo}>
                 {entry.brands[1].brands.map((brand, index) => (
-                  <img src={brand.url} key={index} alt="brand" />
+                  <Image
+                    src={brand.url}
+                    key={index}
+                    alt="brand"
+                    width={brand.width}
+                    height={brand.height}
+                  />
                 ))}
               </BrandRow>
               <BrandRow ref={brandsThree}>
                 {entry.brands[2].brands.map((brand, index) => (
-                  <img src={brand.url} key={index} alt="brand" />
+                  <Image
+                    src={brand.url}
+                    key={index}
+                    alt="brand"
+                    width={brand.width}
+                    height={brand.height}
+                  />
                 ))}
               </BrandRow>
               <BrandRow ref={brandsFour}>
                 {entry.brands[3].brands.map((brand, index) => (
-                  <img src={brand.url} key={index} alt="brand" />
+                  <Image
+                    src={brand.url}
+                    key={index}
+                    alt="brand"
+                    width={brand.width}
+                    height={brand.height}
+                  />
                 ))}
               </BrandRow>
             </Brands>

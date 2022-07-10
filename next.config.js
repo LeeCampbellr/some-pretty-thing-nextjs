@@ -4,7 +4,11 @@ const path = require("path")
 module.exports = withReactSvg({
   reactStrictMode: true,
   images: {
-    domains: ["dev.someprettything.com", "spt.nyc3.digitaloceanspaces.com"],
+    domains: [
+      "dev.someprettything.com",
+      "spt.nyc3.digitaloceanspaces.com",
+      "img.shopstyle-cdn.com",
+    ],
   },
   sassOptions: {
     includePaths: [path.join(__dirname, "utils")],

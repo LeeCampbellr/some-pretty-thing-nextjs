@@ -1,4 +1,5 @@
 import React from "react"
+import Script from "next/script"
 import styled from "styled-components"
 import { gql } from "graphql-request"
 import { Helmet } from "react-helmet"
@@ -81,6 +82,9 @@ export async function getStaticProps({ params }) {
           postDate
           featuredImage {
             url
+            width
+            title
+            height
           }
           categories {
             title
@@ -146,12 +150,13 @@ export default function Post({ data }) {
     <React.Fragment>
       <Helmet>
         {postSeo.scripts}
-        <script
+        <Script
           className="curalate-widget-script"
           charset="utf-8"
           src="https://d30bopbxapq94k.cloudfront.net/js/curalate-widget-client-all-v3.min.js"
-        ></script>
+        ></Script>
       </Helmet>
+
       {postSeo.metaImage.url ? (
         <SEO
           title={postSeo.title}
@@ -173,6 +178,7 @@ export default function Post({ data }) {
           pathname={postSeo.slug}
         ></SEO>
       )}
+
       <Article>
         <Body className="o-postBody">
           <Header postHeader={data.postHeader} />

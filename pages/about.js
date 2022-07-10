@@ -84,7 +84,12 @@ export default function About({ data }) {
       <Section xl>
         <Container containerLarge grid gridTwo alignCenter>
           <ImageWrapper>
-            <Image src={BeginningImage} width="1260" height="1890" />
+            <Image
+              src={BeginningImage}
+              width="1260"
+              height="1890"
+              alt="Blogger flatlay"
+            />
           </ImageWrapper>
           <ContentWrapper>
             <Heading html="h6" level="sh" intro>
@@ -107,7 +112,12 @@ export default function About({ data }) {
       <Section xl>
         <Container containerLarge grid gridTwo layout="imageRight" alignCenter>
           <ImageWrapper>
-            <Image src={ContentImage} width="1260" height="1890" />
+            <Image
+              src={ContentImage}
+              width="1260"
+              height="1890"
+              alt="Emily wearing hat on white background"
+            />
           </ImageWrapper>
           <ContentWrapper>
             <Heading html="h6" level="sh" intro>

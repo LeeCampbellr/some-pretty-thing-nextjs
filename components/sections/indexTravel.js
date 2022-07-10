@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import styled from "styled-components"
 import Slider from "react-slick"
 import { gsap } from "gsap"
@@ -189,15 +190,17 @@ const SectionPostsTravel = ({ posts }) => {
           {posts.map((post, index) => (
             <Link href={`/${post.slug}`} key={index}>
               <a>
-                <Image>
+                <ImageWrapper>
                   {post.featuredImage && (
-                    <img
+                    <Image
                       loading="lazy"
                       src={post.featuredImage[0].url}
                       alt={post.featuredImage[0].title}
+                      width={post.featuredImage[0].width}
+                      height={post.featuredImage[0].height}
                     />
                   )}
-                </Image>
+                </ImageWrapper>
                 <div>
                   <InfoPost date={post.postDate} categories={post.categories} />
                   <Heading html="h2" level="h3">
@@ -276,7 +279,7 @@ const SliderButton = styled.div`
   }
 `
 
-const Image = styled.div`
+const ImageWrapper = styled.div`
   position: relative;
   overflow: hidden;
   width: 100%;

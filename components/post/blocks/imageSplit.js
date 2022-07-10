@@ -1,6 +1,7 @@
 import React from "react"
+import Image from "next/image"
 
-import { Container, Image, Video } from "@components/layout"
+import { Container, Image as ImageWrapper, Video } from "@components/layout"
 
 const ImageSplit = ({ parts }) => {
   return (
@@ -13,9 +14,14 @@ const ImageSplit = ({ parts }) => {
       id={parts.sectionId}
     >
       {parts.imageLeft[0].kind === "image" ? (
-        <Image size={parts.imageLeftSize}>
-          <img src={parts.imageLeft[0].url} alt={parts.imageLeft[0].title} />
-        </Image>
+        <ImageWrapper size={parts.imageLeftSize}>
+          <Image
+            src={parts.imageLeft[0].url}
+            alt={parts.imageLeft[0].title}
+            width={parts.imageLeft[0].width}
+            height={parts.imageLeft[0].height}
+          />
+        </ImageWrapper>
       ) : (
         <Video size={parts.imageLeftSize}>
           <video autoPlay loop muted playsInline>
@@ -24,9 +30,14 @@ const ImageSplit = ({ parts }) => {
         </Video>
       )}
       {parts.imageRight[0].kind === "image" ? (
-        <Image size={parts.imageRightSize}>
-          <img src={parts.imageRight[0].url} alt={parts.imageRight[0].title} />
-        </Image>
+        <ImageWrapper size={parts.imageRightSize}>
+          <Image
+            src={parts.imageRight[0].url}
+            alt={parts.imageRight[0].title}
+            width={parts.imageRight[0].width}
+            height={parts.imageRight[0].height}
+          />
+        </ImageWrapper>
       ) : (
         <Video size={parts.imageRightSize}>
           <video autoPlay loop muted playsInline>

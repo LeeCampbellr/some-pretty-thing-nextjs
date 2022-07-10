@@ -1,4 +1,5 @@
 import React from "react"
+import Image from "next/image"
 import styled from "styled-components"
 
 import { Heading } from "@components/type"
@@ -9,9 +10,13 @@ const CardShop = ({ shopItem, category }) => {
 
   return (
     <Card href={product.clickUrl}>
-      <Image>
-        <img src={product.image.sizes.Original.url} alt={product.name} />
-      </Image>
+      <ImageWrapper>
+        <Image
+          src={product.image.sizes.Original.url}
+          alt={product.brandedName}
+          layout="fill"
+        />
+      </ImageWrapper>
       <InfoShop brand={product.retailer.name} category={category} />
       <Heading html="h2" level="h3" center>
         {product.name}
@@ -25,7 +30,7 @@ const Card = styled.a`
   text-align: center;
 `
 
-const Image = styled.div`
+const ImageWrapper = styled.div`
   position: relative;
 
   &:before {

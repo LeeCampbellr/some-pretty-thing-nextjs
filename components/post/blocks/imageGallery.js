@@ -1,7 +1,8 @@
 import React from "react"
+import Image from "next/image"
 import styled from "styled-components"
 
-import { Container, Image, Video } from "@components/layout"
+import { Container, Image as ImageWrapper, Video } from "@components/layout"
 
 const ImageGallery = ({ parts }) => {
   return (
@@ -15,9 +16,14 @@ const ImageGallery = ({ parts }) => {
       {parts.gallery.map((partImage, index) => (
         <React.Fragment key={index}>
           {partImage.kind === "image" ? (
-            <Image key={index}>
-              <img src={partImage.url} alt={partImage.title} />
-            </Image>
+            <ImageWrapper key={index}>
+              <Image
+                src={partImage.url}
+                alt={partImage.title}
+                width={partImage.width}
+                height={partImage.height}
+              />
+            </ImageWrapper>
           ) : (
             <Video key={index}>
               <video autoPlay loop muted playsInline>
@@ -34,7 +40,7 @@ const ImageGallery = ({ parts }) => {
 export default ImageGallery
 
 const ImageContainer = styled(Container)`
-  ${Image} {
+  ${ImageWrapper} {
     flex: 1 1 100%;
     padding-right: var(--spacingGutter);
     &:first-of-type {

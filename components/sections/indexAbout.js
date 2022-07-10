@@ -68,12 +68,18 @@ const SectionAbout = () => {
         <Images>
           <ImageLeft>
             <ParallaxWrapper ref={imageLeft}>
-              <Image src={AboutLeft} />
+              <Image
+                src={AboutLeft}
+                alt="Emily shooting photo with vintage camera"
+              />
             </ParallaxWrapper>
           </ImageLeft>
           <ImageRight>
             <ParallaxWrapper ref={imageRight}>
-              <Image src={AboutRight} />
+              <Image
+                src={AboutRight}
+                alt="Emily reading a book leaning up against a console"
+              />
             </ParallaxWrapper>
           </ImageRight>
         </Images>

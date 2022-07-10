@@ -9,6 +9,8 @@ export const FRAGMENT_POST_BRAND_BLOCK = gql`
         id
         image {
           url
+          width
+          height
         }
         linkUrl
       }
@@ -60,6 +62,8 @@ export const FRAGMENT_POST_CONTENT_INTRO_SPONSORED = gql`
     sponsoredLogo {
       title
       url
+      width
+      height
     }
   }
 `
@@ -82,6 +86,8 @@ export const FRAGMENT_POST_CONTENT_SPLIT_IMAGE = gql`
       title
       url
       kind
+      width
+      height
     }
     layout
     paragraph
@@ -97,6 +103,8 @@ export const FRAGMENT_POST_IMAGE = gql`
       title
       url
       kind
+      width
+      height
     }
     imageSize
     sectionId
@@ -113,6 +121,8 @@ export const FRAGMENT_POST_IMAGE_GALLERY = gql`
       title
       url
       kind
+      width
+      height
     }
     sectionId
   }
@@ -126,12 +136,16 @@ export const FRAGMENT_POST_IMAGE_SPLIT = gql`
       url
       title
       kind
+      width
+      height
     }
     imageLeftSize
     imageRight {
       url
       title
       kind
+      width
+      height
     }
     imageRightSize
     sectionId

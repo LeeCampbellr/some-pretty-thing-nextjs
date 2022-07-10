@@ -54,7 +54,12 @@ const NavigationAbout = ({ show }) => {
       <Links>
         <Link href="/about">
           <AboutLink>
-            <Image src={About} layout="fill" objectFit="cover" />
+            <Image
+              src={About}
+              layout="fill"
+              objectFit="cover"
+              alt="Emily wearing hat on white background"
+            />
 
             <Heading as="h4" level="h4">
               About
@@ -63,7 +68,12 @@ const NavigationAbout = ({ show }) => {
         </Link>
         <Link href="/about/faq">
           <AboutLink>
-            <Image src={Faq} layout="fill" objectFit="cover" />
+            <Image
+              src={Faq}
+              layout="fill"
+              objectFit="cover"
+              alt="Emily leaning up against desk with books in the background"
+            />
             <Heading as="h4" level="h4">
               Interview w/ Emily
             </Heading>
@@ -71,7 +81,12 @@ const NavigationAbout = ({ show }) => {
         </Link>
         <Link href="/about/press">
           <AboutLink>
-            <Image src={Press} layout="fill" objectFit="cover" />
+            <Image
+              src={Press}
+              layout="fill"
+              objectFit="cover"
+              alt="Writing in notebook on desk"
+            />
             <Heading as="h4" level="h4">
               Press
             </Heading>

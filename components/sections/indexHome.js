@@ -25,10 +25,20 @@ const SectionHome = ({ posts }) => {
         <Link href="/customizing-our-dining-room-with-framebridge">
           <Content>
             <Logo>
-              <Image src={FeaturedLogo} width="160px" height="16px" />
+              <Image
+                src={FeaturedLogo}
+                width="160px"
+                height="16px"
+                alt="Framebridge logo"
+              />
             </Logo>
             <ImageWrapper>
-              <Image src={FeaturedImage} objectFit="cover" layout="fill" />
+              <Image
+                src={FeaturedImage}
+                objectFit="cover"
+                layout="fill"
+                alt="Emily standing at mid-century dining table"
+              />
             </ImageWrapper>
             <Heading html="h4" level="h3" center>
               Customizing our Dining Room with Framebridge

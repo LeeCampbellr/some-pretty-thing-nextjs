@@ -57,15 +57,15 @@ const IndexWallflower = () => {
       </TitleContainer>
 
       <ImagesContainer ref={images} grid sm>
-        <Image src={WallflowerOne} width="320" height="480" />
-        <Image src={WallflowerTwo} width="240" height="360" />
-        <Image src={WallflowerThree} width="320" height="220" />
-        <Image src={WallflowerFour} width="240" height="360" />
-        <Image src={WallflowerFive} width="320" height="480" />
-        <Image src={WallflowerSix} width="240" height="360" />
-        <Image src={WallflowerSeven} width="320" height="220" />
-        <Image src={WallflowerEight} width="240" height="360" />
-        <Image src={WallflowerNine} width="320" height="480" />
+        <Image src={WallflowerOne} width="320" height="480" alt="" />
+        <Image src={WallflowerTwo} width="240" height="360" alt="" />
+        <Image src={WallflowerThree} width="320" height="220" alt="" />
+        <Image src={WallflowerFour} width="240" height="360" alt="" />
+        <Image src={WallflowerFive} width="320" height="480" alt="" />
+        <Image src={WallflowerSix} width="240" height="360" alt="" />
+        <Image src={WallflowerSeven} width="320" height="220" alt="" />
+        <Image src={WallflowerEight} width="240" height="360" alt="" />
+        <Image src={WallflowerNine} width="320" height="480" alt="" />
       </ImagesContainer>
 
       <Container containerMedium mg flex alignCenter flexColumn>

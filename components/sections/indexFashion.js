@@ -25,10 +25,20 @@ const SectionFashion = ({ posts }) => {
         <Link href="/discovering-charlestons-cutest-boutique">
           <Content>
             <Logo>
-              <Image src={FeaturedLogo} width="160px" height="36px" />
+              <Image
+                src={FeaturedLogo}
+                width="160px"
+                height="36px"
+                alt="Grit and Grace Logo"
+              />
             </Logo>
             <ImageWrapper>
-              <Image src={FeaturedImage} objectFit="cover" layout="fill" />
+              <Image
+                src={FeaturedImage}
+                objectFit="cover"
+                layout="fill"
+                alt="Emily putting on necklace in mirror"
+              />
             </ImageWrapper>
             <Heading html="h4" level="h3" center>
               Discovering Charleston&apos;s Cutest Boutique

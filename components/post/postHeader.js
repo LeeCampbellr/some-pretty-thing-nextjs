@@ -1,4 +1,5 @@
 import React from "react"
+import Image from "next/image"
 import styled from "styled-components"
 
 import InfoPost from "@components/post/postInfo"
@@ -9,12 +10,15 @@ import { fluidSize } from "@utils/fluidSize"
 export default function PostHeader({ postHeader }) {
   return (
     <Header className={`-${postHeader.headerLayout}`}>
-      <Image>
-        <img
+      <ImageWrapper>
+        <Image
           src={postHeader.featuredImage[0].url}
           alt={postHeader.featuredImage[0].title}
+          width={postHeader.featuredImage[0].width}
+          height={postHeader.featuredImage[0].height}
+          layout={postHeader.headerLayout === "featured" ? "fill" : "intrinsic"}
         />
-      </Image>
+      </ImageWrapper>
       <Content>
         <InfoPost
           light={postHeader.headerLayout === "featured" ? true : false}
@@ -47,7 +51,7 @@ export default function PostHeader({ postHeader }) {
   )
 }
 
-const Image = styled.div`
+const ImageWrapper = styled.div`
   img {
     height: 100%;
     object-fit: cover;
@@ -90,9 +94,17 @@ const Header = styled.header`
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: minmax(0, 1fr);
-    min-height: 640px;
+    min-height: 720px;
 
-    ${Image} {
+    ${media.sm`
+      min-height: 800px;
+    `}
+
+    ${media.md`
+      min-height: 960px;
+    `}
+
+    ${ImageWrapper} {
       grid-column: 1;
       grid-row: 1;
       position: relative;
@@ -145,7 +157,7 @@ const Header = styled.header`
       grid-template-columns: 1fr 1fr;
     `}
 
-    ${Image} {
+    ${ImageWrapper} {
       grid-row: 1;
       width: 100%;
 
@@ -174,7 +186,7 @@ const Header = styled.header`
     grid-template-columns: 1fr;
     grid-template-rows: minmax(0, 1fr);
 
-    ${Image} {
+    ${ImageWrapper} {
       display: none;
     }
 

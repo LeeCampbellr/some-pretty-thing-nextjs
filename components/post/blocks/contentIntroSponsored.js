@@ -1,5 +1,5 @@
 import React from "react"
-
+import Image from "next/image"
 import styled from "styled-components"
 
 import { Heading } from "@components/type"
@@ -15,9 +15,11 @@ const ContentIntroSponsored = ({ parts }) => {
           {parts.sponsoredContent}
         </Heading>
         <Logo>
-          <img
+          <Image
             src={parts.sponsoredLogo[0].url}
             alt={parts.sponsoredLogo[0].title}
+            width={parts.sponsoredLogo[0].width}
+            height={parts.sponsoredLogo[0].height}
           />
         </Logo>
       </Sponsored>

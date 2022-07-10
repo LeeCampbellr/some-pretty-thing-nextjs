@@ -29,7 +29,7 @@ const SectionShop = () => {
               </Heading>
               <ImageWrapper>
                 <div>
-                  <Image src={HomeImage} />
+                  <Image src={HomeImage} alt="Stack of books" />
                 </div>
               </ImageWrapper>
             </ShopCard>
@@ -41,7 +41,7 @@ const SectionShop = () => {
               </Heading>
               <ImageWrapper>
                 <div>
-                  <Image src={OfficeImage} />
+                  <Image src={OfficeImage} alt="stack of notebooks and pens" />
                 </div>
               </ImageWrapper>
             </ShopCard>
@@ -53,7 +53,10 @@ const SectionShop = () => {
               </Heading>
               <ImageWrapper>
                 <div>
-                  <Image src={ClosetImage} />
+                  <Image
+                    src={ClosetImage}
+                    alt="sunglasses and bag on blanket outdoors"
+                  />
                 </div>
               </ImageWrapper>
             </ShopCard>
