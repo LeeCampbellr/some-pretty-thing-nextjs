@@ -11,24 +11,26 @@ export default function PostSidebar({ sidebar }) {
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
-    window.onscroll = function () {
-      scrollProgress()
-    }
+    const postProgress = document.querySelector(".a-sidebarProgress")
+    const postHeight = document.querySelector(".o-postBody").clientHeight
 
-    const scrollProgress = () => {
-      const postBody = document.querySelector(".o-postBody")
-      const postProgress = document.querySelector(".a-sidebarProgress")
+    const handleScroll = () => {
+      const scrollPercentage =
+        (window.scrollY /
+          (postHeight - document.documentElement.clientHeight)) *
+        100
 
-      const winScroll =
-        document.body.scrollTop || document.documentElement.scrollTop
-      const height =
-        postBody.scrollHeight - document.documentElement.clientHeight
-      const scrollPercentage = (winScroll / height) * 100
       if (scrollPercentage >= 100) {
         postProgress.style.height = "100%"
       } else {
         postProgress.style.height = scrollPercentage + "%"
       }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
     }
   }, [])
 
