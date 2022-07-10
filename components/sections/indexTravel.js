@@ -196,8 +196,7 @@ const SectionPostsTravel = ({ posts }) => {
                       loading="lazy"
                       src={post.featuredImage[0].url}
                       alt={post.featuredImage[0].title}
-                      width={post.featuredImage[0].width}
-                      height={post.featuredImage[0].height}
+                      layout="fill"
                     />
                   )}
                 </ImageWrapper>
@@ -212,7 +211,7 @@ const SectionPostsTravel = ({ posts }) => {
           ))}
         </TravelSlider>
       </Container>
-      <LinkSection link="/travel" text="All Travel Posts" />
+      <LinkSection link="/category/travel" text="All Travel Posts" />
     </Section>
   )
 }
@@ -292,7 +291,7 @@ const ImageWrapper = styled.div`
     padding-top: calc((4 / 3) * 100%);
   }
 
-  > img {
+  img {
     bottom: 0;
     height: 100%;
     left: 0;

@@ -1,12 +1,12 @@
 import React from "react"
-import { Helmet } from "react-helmet"
+import Head from "next/head"
 
 import { Container } from "@components/layout"
 
 const Widget = ({ parts }) => {
   return (
     <React.Fragment>
-      <Helmet>
+      <Head>
         <script
           async
           src="//widgets.shopstyle.com/shopstyle-widget-snippet.js"
@@ -18,7 +18,7 @@ const Widget = ({ parts }) => {
           charset="utf-8"
           src="//d30bopbxapq94k.cloudfront.net/js/curalate-widget-client-all-v3.min.js"
         ></script>
-      </Helmet>
+      </Head>
       <Container
         mg
         containerMedium

@@ -1,16 +1,16 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Helmet from "react-helmet"
+import Head from "next/head"
 
 const Twitter = ({ type, twitterUsername, title, description, image }) => (
-  <Helmet>
+  <Head>
     <meta name="twitter:creator" content={twitterUsername} />
     <meta name="twitter:card" content={type} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
     <meta name="twitter:image:alt" content={description} />
-  </Helmet>
+  </Head>
 )
 
 export default Twitter

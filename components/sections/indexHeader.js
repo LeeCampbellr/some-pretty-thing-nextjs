@@ -36,7 +36,7 @@ const SectionHeader = ({ post }) => {
               {post.title}
             </Heading>
             {post.excerpt && <Paragraph level="lg">{post.excerpt}</Paragraph>}
-            <LinkArrow text="Read Post" light={featured} />
+            <LinkArrow nested text="Read Post" light={featured} />
           </Content>
         </Header>
       </Link>

@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Helmet from "react-helmet"
+import Head from "next/head"
 
 const Facebook = ({
   type,
@@ -11,7 +11,7 @@ const Facebook = ({
   locale,
   url,
 }) => (
-  <Helmet>
+  <Head>
     <meta property="og:site_name" content={title} />
     <meta property="og:locale" content={locale} />
     <meta property="og:url" content={url} />
@@ -20,7 +20,7 @@ const Facebook = ({
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
     <meta property="og:image:alt" content={description} />
-  </Helmet>
+  </Head>
 )
 
 export default Facebook

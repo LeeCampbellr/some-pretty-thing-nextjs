@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Helmet from "react-helmet"
+import Head from "next/head"
 import Facebook from "@utils/seo/facebook"
 import Twitter from "@utils/seo/twitter"
 
@@ -20,17 +20,14 @@ function SEO({ description, title, pathname, image }) {
   const metaTitle = title ? `${title} | ${seo.title}` : seo.title
   const metaImage = image ? image : seo.image
   const metaDescription = description ? description : seo.description
-  const canonical = pathname ? `${seo.url}/${pathname}` : null
 
   return (
     <React.Fragment>
-      <Helmet>
+      <Head>
         <title>{metaTitle}</title>
-        <html lang="en" />
         <meta name="description" content={metaDescription} />
         <meta name="image" content={metaImage} />
-        {canonical ? <link rel="canonical" href={canonical} /> : null}
-      </Helmet>
+      </Head>
       <Facebook
         description={metaDescription}
         facebookUsername={seo.facebookUsername}

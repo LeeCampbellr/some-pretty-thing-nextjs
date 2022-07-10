@@ -56,7 +56,7 @@ const SectionHome = ({ posts }) => {
         </Posts>
       </Home>
 
-      <LinkSection link="/home" text="All Home Posts" />
+      <LinkSection link="/category/home" text="All Home Posts" />
     </Section>
   )
 }

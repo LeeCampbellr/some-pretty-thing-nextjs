@@ -48,25 +48,47 @@ export const LinkExternal = styled.a`
   position: relative;
 `
 
-const Arrow = ({ to, text, light, ...props }) => {
+const Arrow = ({ to, nested, text, light, ...props }) => {
   return (
-    <a href={to} {...props}>
-      <Heading html="h6" level="h6" noMargin lower="true">
-        {text}
-      </Heading>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="10"
-        fill="none"
-        viewBox="0 0 24 10"
-      >
-        <path
-          stroke="#111"
-          d="M0 5.026h24m0 0c-3.5-.571-7-1.74-9-4.026m9 4.026c-3.5.572-7 1.688-9 3.974"
-        ></path>
-      </svg>
-    </a>
+    <>
+      {nested ? (
+        <div {...props}>
+          <Heading html="h6" level="h6" noMargin lower="true">
+            {text}
+          </Heading>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="10"
+            fill="none"
+            viewBox="0 0 24 10"
+          >
+            <path
+              stroke="#111"
+              d="M0 5.026h24m0 0c-3.5-.571-7-1.74-9-4.026m9 4.026c-3.5.572-7 1.688-9 3.974"
+            ></path>
+          </svg>
+        </div>
+      ) : (
+        <a href={to} {...props}>
+          <Heading html="h6" level="h6" noMargin lower="true">
+            {text}
+          </Heading>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="10"
+            fill="none"
+            viewBox="0 0 24 10"
+          >
+            <path
+              stroke="#111"
+              d="M0 5.026h24m0 0c-3.5-.571-7-1.74-9-4.026m9 4.026c-3.5.572-7 1.688-9 3.974"
+            ></path>
+          </svg>
+        </a>
+      )}
+    </>
   )
 }
 

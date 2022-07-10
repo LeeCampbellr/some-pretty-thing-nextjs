@@ -2,7 +2,7 @@ import React from "react"
 import Script from "next/script"
 import styled from "styled-components"
 import { gql } from "graphql-request"
-import { Helmet } from "react-helmet"
+import Head from "next/head"
 
 import Header from "@post/postHeader"
 import Content from "@post/postContent"
@@ -148,14 +148,14 @@ export default function Post({ data }) {
   const { postSeo } = data
   return (
     <React.Fragment>
-      <Helmet>
+      <Head>
         {postSeo.scripts}
         <Script
           className="curalate-widget-script"
           charset="utf-8"
           src="https://d30bopbxapq94k.cloudfront.net/js/curalate-widget-client-all-v3.min.js"
         ></Script>
-      </Helmet>
+      </Head>
 
       {postSeo.metaImage.url ? (
         <SEO

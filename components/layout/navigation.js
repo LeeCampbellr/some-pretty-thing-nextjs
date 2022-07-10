@@ -16,7 +16,7 @@ import { media } from "@utils/media"
 
 const Navigation = () => {
   const router = useRouter()
-  const navigation = useRef()
+  const navigation = useRef(null)
   const [nav, setNav] = useState(false)
   const toggleNav = () => {
     setNav(!nav)

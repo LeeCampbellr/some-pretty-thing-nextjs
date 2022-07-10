@@ -17,6 +17,7 @@ export default function PostHeader({ postHeader }) {
           width={postHeader.featuredImage[0].width}
           height={postHeader.featuredImage[0].height}
           layout={postHeader.headerLayout === "featured" ? "fill" : "intrinsic"}
+          priority
         />
       </ImageWrapper>
       <Content>
