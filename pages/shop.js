@@ -8,6 +8,8 @@ import { Section, Container } from "@components/layout"
 import { Heading } from "@components/type"
 import { media } from "@utils/media"
 
+import SEO from "@utils/seo/seo"
+
 export async function getStaticProps() {
   const lists = await getShopStyleLists()
   const favorites = await getShopStyleFeatured()
@@ -20,6 +22,7 @@ export async function getStaticProps() {
 export default function Shop({ lists, favorites }) {
   return (
     <>
+      <SEO title="Shop" />
       <SectionShop />
       <Section>
         <Container md mdTop>

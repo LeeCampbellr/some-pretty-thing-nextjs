@@ -15,6 +15,7 @@ import CaseStudies from "@components/about/caseStudies"
 import SectionContact from "@components/sections/contact"
 import { request } from "@data/craft"
 import { media } from "@utils/media"
+import SEO from "@utils/seo/seo"
 
 export async function getStaticProps() {
   const PRESS_QUERY = gql`
@@ -180,6 +181,13 @@ const Press = ({ data }) => {
 
   return (
     <>
+      <SEO
+        title={entry.title}
+        description={entry.metaDescription}
+        image={entry.metaImage[0].url}
+        pathname={entry.slug}
+      />
+
       <Page>
         <Section xl>
           <LineTwo className="line -top" />

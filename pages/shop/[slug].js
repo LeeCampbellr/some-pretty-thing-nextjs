@@ -10,6 +10,7 @@ import { Section, Container } from "@components/layout"
 import { Heading } from "@components/type"
 import { media } from "@utils/media"
 import { LinkArrow } from "@components/links"
+import SEO from "@utils/seo/seo"
 
 export async function getStaticPaths() {
   const paths = [
@@ -44,6 +45,7 @@ export default function ShopCategory({ data, list }) {
 
   return (
     <>
+      <SEO title={list.title} />
       <Section lgTop>
         <Container flex justifyCenter md>
           <LinkArrow to="/shop" text="All Shop" reverse />

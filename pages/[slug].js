@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { gql } from "graphql-request"
+import { Helmet } from "react-helmet"
 
 import Header from "@post/postHeader"
 import Content from "@post/postContent"
@@ -9,6 +10,7 @@ import Sidebar from "@post/postSidebar"
 
 import { request } from "@data/craft"
 import { media } from "@utils/media"
+import SEO from "@utils/seo/seo"
 
 import {
   FRAGMENT_POST_BRAND_BLOCK,
@@ -53,6 +55,24 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const POST_QUERY = gql`
     query Post($slug: [String]) {
+       postSeo: entry(slug: $slug) {
+        ... on posts_post_Entry {
+          # SEO
+          title
+          slug
+          metaDescription
+          scripts
+          metaTags {
+            title
+          }
+          metaImage {
+            url
+          }
+          featuredImage {
+            url
+          }
+        }
+      }
       postHeader: entry(slug: $slug) {
         ... on posts_post_Entry {
           title
@@ -121,8 +141,38 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ data }) {
+  const { postSeo } = data
   return (
     <React.Fragment>
+      <Helmet>
+        {postSeo.scripts}
+        <script
+          className="curalate-widget-script"
+          charset="utf-8"
+          src="https://d30bopbxapq94k.cloudfront.net/js/curalate-widget-client-all-v3.min.js"
+        ></script>
+      </Helmet>
+      {postSeo.metaImage.url ? (
+        <SEO
+          title={postSeo.title}
+          description={postSeo.metaDescription}
+          image={postSeo.metaImage[0].url}
+          pathname={postSeo.slug}
+        />
+      ) : postSeo.featuredImage.url ? (
+        <SEO
+          title={postSeo.title}
+          description={postSeo.metaDescription}
+          image={postSeo.featuredImage[0].url}
+          pathname={postSeo.slug}
+        ></SEO>
+      ) : (
+        <SEO
+          title={postSeo.title}
+          description={postSeo.metaDescription}
+          pathname={postSeo.slug}
+        ></SEO>
+      )}
       <Article>
         <Body className="o-postBody">
           <Header postHeader={data.postHeader} />

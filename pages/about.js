@@ -15,6 +15,8 @@ import { media } from "@utils/media"
 import BeginningImage from "public/images/about/beginning.jpg"
 import ContentImage from "public/images/about/content.jpg"
 
+import SEO from "@utils/seo/seo"
+
 export async function getStaticProps() {
   const ABOUT_QUERY = gql`
     query AboutPage {
@@ -45,8 +47,15 @@ export async function getStaticProps() {
 }
 
 export default function About({ data }) {
+  const { about } = data
   return (
     <React.Fragment>
+      <SEO
+        title={about.title}
+        description={about.metaDescription}
+        image={about.metaImage[0].url}
+        pathname={about.slug}
+      />
       <Header />
 
       <Section xl>

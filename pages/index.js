@@ -14,8 +14,24 @@ import Fashion from "@sections/indexFashion"
 import Shop from "@sections/indexShop"
 import About from "@sections/indexAbout"
 
+import SEO from "@utils/seo/seo"
+
 const HOME_QUERY = gql`
   query HomePage {
+    home: entry(slug: "home") {
+      ... on home_home_Entry {
+        id
+        slug
+        title
+        metaTags {
+          title
+        }
+        metaImage {
+          url
+        }
+        metaDescription
+      }
+    }
     featuredPost: entry {
       ... on posts_post_Entry {
         id
@@ -78,11 +94,23 @@ export async function getStaticProps() {
 }
 
 export default function Home({ data }) {
-  const { featuredPost, recentPosts, homePosts, fashionPosts, travelPosts } =
-    data
+  const {
+    home,
+    featuredPost,
+    recentPosts,
+    homePosts,
+    fashionPosts,
+    travelPosts,
+  } = data
 
   return (
     <React.Fragment>
+      <SEO
+        title={home.title}
+        description={home.metaDescription}
+        image={home.metaImage[0].url}
+        pathname={home.slug}
+      />
       <Header post={featuredPost} />
       <RecentPosts posts={recentPosts} />
       <Wallflower />

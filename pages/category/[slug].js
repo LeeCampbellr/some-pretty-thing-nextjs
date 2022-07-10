@@ -10,6 +10,7 @@ import { media } from "@utils/media"
 import Navigation from "@components/category/navigation"
 
 import { request, POST_FRAGMENT } from "@data/craft"
+import SEO from "@utils/seo/seo"
 
 export async function getStaticPaths() {
   const ALL_CATEGORIES_QUERY = gql`
@@ -95,6 +96,8 @@ export async function getStaticProps({ params }) {
 export default function Category({ data, posts }) {
   return (
     <Page xlTop>
+      <SEO title={data.category.title} />
+
       <Heading html="h1" level="huge" center>
         {data.category.title}
       </Heading>

@@ -14,6 +14,7 @@ import NavigationFAQ from "@components/about/faqSubmenu"
 
 import { request } from "@data/craft"
 import { media } from "@utils/media"
+import SEO from "@utils/seo/seo"
 
 export async function getStaticProps() {
   const FAQ_QUERY = gql`
@@ -97,6 +98,12 @@ export default function FAQ({ data }) {
 
   return (
     <>
+      <SEO
+        title={entry.title}
+        description={entry.metaDescription}
+        image={entry.metaImage[0].url}
+        pathname={entry.slug}
+      />
       <Page>
         <Section xl mgTop>
           <BackgroundLine />
