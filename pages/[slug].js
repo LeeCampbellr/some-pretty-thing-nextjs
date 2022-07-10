@@ -148,14 +148,12 @@ export default function Post({ data }) {
   const { postSeo } = data
   return (
     <React.Fragment>
-      <Head>
-        {postSeo.scripts}
-        <Script
-          className="curalate-widget-script"
-          charset="utf-8"
-          src="https://d30bopbxapq94k.cloudfront.net/js/curalate-widget-client-all-v3.min.js"
-        ></Script>
-      </Head>
+      <Head>{postSeo.scripts}</Head>
+      <Script
+        className="curalate-widget-script"
+        charset="utf-8"
+        src="https://d30bopbxapq94k.cloudfront.net/js/curalate-widget-client-all-v3.min.js"
+      ></Script>
 
       {postSeo.metaImage.url ? (
         <SEO
