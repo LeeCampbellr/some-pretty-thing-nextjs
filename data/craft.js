@@ -11,6 +11,12 @@ export function request({ query, variables, preview }) {
   return client.request(query, variables)
 }
 
+export const client = new GraphQLClient("https://dev.someprettything.com/api", {
+  headers: {
+    authorization: `Bearer BcAiqvlKmVRt1W3ZG_Jj-Y8qdEh7l8PV`,
+  },
+})
+
 export const POST_FRAGMENT = gql`
   fragment PostFragment on posts_post_Entry {
     id
