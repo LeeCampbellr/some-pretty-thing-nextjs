@@ -53,11 +53,15 @@ export default function PostHeader({ postHeader }) {
 }
 
 const ImageWrapper = styled.div`
+  span {
+    width: 100% !important;
+  }
   img {
-    height: 100%;
+    height: 100% !important;
+    max-height: initial !important;
     object-fit: cover;
-    width: 100%;
-    max-width: 100%;
+    width: 100% !important;
+    max-width: initial !important;
   }
 `
 

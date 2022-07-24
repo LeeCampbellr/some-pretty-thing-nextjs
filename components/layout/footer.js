@@ -36,19 +36,19 @@ const Footer = () => (
               <LinkInternal href="/posts">Posts</LinkInternal>
             </NavLink>
             <NavLink>
-              <LinkInternal href="/lifestyle">Lifestyle</LinkInternal>
+              <LinkInternal href="/category/lifestyle">Lifestyle</LinkInternal>
             </NavLink>
             <NavLink>
-              <LinkInternal href="/fashion">Fashion</LinkInternal>
+              <LinkInternal href="/category/fashion">Fashion</LinkInternal>
             </NavLink>
             <NavLink>
-              <LinkInternal href="/beauty">Beauty</LinkInternal>
+              <LinkInternal href="/category/beauty">Beauty</LinkInternal>
             </NavLink>
             <NavLink>
-              <LinkInternal href="/home">Home</LinkInternal>
+              <LinkInternal href="/category/home">Home</LinkInternal>
             </NavLink>
             <NavLink>
-              <LinkInternal href="/travel">Travel</LinkInternal>
+              <LinkInternal href="/category/travel">Travel</LinkInternal>
             </NavLink>
           </NavGroup>
           <NavGroup>
@@ -83,7 +83,7 @@ const Footer = () => (
       <Secondary flex spaceBetween alignCenter>
         <SocialLinks />
         <Paragraph level="sm" noMargin>
-          All rights reserved — 2022 © Some Pretty Thing
+          All rights reserved — {new Date().getFullYear()} © Some Pretty Thing
         </Paragraph>
       </Secondary>
     </Section>
