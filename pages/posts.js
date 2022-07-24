@@ -20,6 +20,7 @@ export default function AllPosts() {
       entries(sectionId: 10, offset: $skip, limit: $limit) {
         ...PostFragment
       }
+      entryCount(sectionId: 10)
     }
     ${POST_FRAGMENT}
   `
@@ -32,6 +33,7 @@ export default function AllPosts() {
   )
 
   const entries = data && data.flatMap((entries) => entries.entries)
+  const noMoreEntries = entries && entries.length === data[0].entryCount
 
   return (
     <Page xlTop>
@@ -48,7 +50,9 @@ export default function AllPosts() {
       </Posts>
 
       <Container sm smTop flex alignCenter justifyCenter>
-        <Button onClick={() => setSize(size + 1)}>Load More Posts</Button>
+        {!noMoreEntries && (
+          <Button onClick={() => setSize(size + 1)}>Load More Posts</Button>
+        )}
       </Container>
     </Page>
   )

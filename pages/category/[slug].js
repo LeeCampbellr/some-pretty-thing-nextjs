@@ -1,15 +1,16 @@
-import React from "react"
+import { useState } from "react"
 import Link from "next/link"
 import styled from "styled-components"
 import { gql } from "graphql-request"
+import useSWRInfinite from "swr/infinite"
 
 import { Container, Section } from "@components/layout"
 import { Heading } from "@components/type"
 import PostCard from "@components/post/postCard"
 import { media } from "@utils/media"
 import Navigation from "@components/category/navigation"
-
-import { request, POST_FRAGMENT } from "@data/craft"
+import { Button } from "@components/links"
+import { client, request, POST_FRAGMENT } from "@data/craft"
 import SEO from "@utils/seo/seo"
 
 export async function getStaticPaths() {
@@ -69,46 +70,63 @@ export async function getStaticProps({ params }) {
       }
     }
   `
-  const data = await request({
+  const cat = await request({
     query: CATEGORY_QUERY,
     variables: { slug: params.slug },
   })
 
-  const POST_QUERY = gql`
-    query Posts($id: [QueryArgument]) {
-      entries(categories: $id) {
+  return {
+    props: { cat },
+  }
+}
+
+export default function Category({ cat }) {
+  const numToQuery = 20
+  const [skip, setSkip] = useState(0)
+
+  const postQuery = gql`
+    query Posts($skip: Int, $limit: Int, $catId: [QueryArgument]) {
+      entries(sectionId: 10, offset: $skip, limit: $limit, categories: $catId) {
         ...PostFragment
       }
+      entryCount(sectionId: 10, categories: $catId)
     }
     ${POST_FRAGMENT}
   `
 
-  const posts = await request({
-    query: POST_QUERY,
-    variables: { id: data.category.id },
-  })
+  const fetcher = (query, variables) => client.request(query, variables)
 
-  return {
-    props: { data, posts },
-  }
-}
+  const { data, error, isValidating, mutate, size, setSize } = useSWRInfinite(
+    (index) => [
+      postQuery,
+      { skip: index * numToQuery, limit: numToQuery, catId: cat.category.id },
+    ],
+    fetcher
+  )
 
-export default function Category({ data, posts }) {
+  const entries = data && data.flatMap((entries) => entries.entries)
+  const noMoreEntries = entries && entries.length === data[0].entryCount
+
   return (
     <Page xlTop>
-      <SEO title={data.category.title} />
+      <SEO title={cat.category.title} />
 
       <Heading html="h1" level="huge" center>
-        {data.category.title}
+        {cat.category.title}
       </Heading>
 
-      <Navigation category={data.category} />
+      <Navigation category={cat.category} />
 
       <Posts grid>
-        {posts.entries.map((post, index) => (
-          <PostCard key={index} post={post} />
-        ))}
+        {entries &&
+          entries.map((post, index) => <PostCard key={index} post={post} />)}
       </Posts>
+
+      <Container sm smTop flex alignCenter justifyCenter>
+        {!noMoreEntries && (
+          <Button onClick={() => setSize(size + 1)}>Load More Posts</Button>
+        )}
+      </Container>
     </Page>
   )
 }
