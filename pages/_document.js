@@ -34,11 +34,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>{this.props.styleTags}</Head>
-        <Script
-          src="https://cdn.usefathom.com/script.js"
-          data-site="QYCNUWMB"
-          defer
-        />
+
         <body>
           <Main />
           <NextScript />
