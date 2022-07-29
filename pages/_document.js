@@ -1,6 +1,7 @@
 import Document, { Head, Html, Main, NextScript } from "next/document"
 // Import styled components ServerStyleSheet
 import { ServerStyleSheet } from "styled-components"
+import Script from "next/script"
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -33,6 +34,11 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>{this.props.styleTags}</Head>
+        <Script
+          src="https://cdn.usefathom.com/script.js"
+          data-site="QYCNUWMB"
+          defer
+        />
         <body>
           <Main />
           <NextScript />
