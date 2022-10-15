@@ -11,9 +11,9 @@ import { Heading, Paragraph } from "@components/type"
 import SocialLinks from "@components/socialLinks"
 import { media } from "@utils/media"
 
-import About from "assets/navAbout/about.png"
-import Faq from "assets/navAbout/faq.png"
-import Press from "assets/navAbout/press.png"
+import About from "public/images/about/about.png"
+import Faq from "public/images/about/faq.png"
+import Press from "public/images/about/press.png"
 
 const NavigationAbout = ({ show }) => {
   const [copied, setCopied] = useState(false)
