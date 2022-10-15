@@ -91,7 +91,7 @@ const SectionInterview = () => {
             <i>An Interview with Emily</i>
           </Heading>
           <Info>
-            <Link href="faq">Learn More</Link>
+            <Link href="/about/faq">Learn More</Link>
           </Info>
         </Content>
       </Interview>
