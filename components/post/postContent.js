@@ -49,12 +49,32 @@ const Content = styled.div`
   max-width: 100vw;
   overflow: hidden;
   position: relative;
+  font-family: var(--paragraphFamily);
+  font-weight: var(--paragraphWeight);
+  line-height: var(--paragraphLeading);
+
+  a {
+    font-size: 1.25rem;
+    line-height: 1.35;
+    color: var(--color-primary);
+    text-decoration: underline;
+    transition: var(--transitionBase);
+
+    &:hover {
+      color: var(--red80);
+    }
+  }
 
   p,
   ul,
   ol {
-    ${fluidSize(2, 16, 18, "vw", "font-size") +
-    fluidSize(3, 16, 24, "vw", "margin-bottom")}
+    font-size: 1.25rem;
+    line-height: 1.35;
+    ${fluidSize(3, 16, 24, "vw", "margin-bottom")}
+
+    b {
+      font-weight: 600;
+    }
   }
 
   ul,
