@@ -4,6 +4,7 @@ import Image from "next/image"
 import { gql } from "graphql-request"
 
 import { request, POST_FRAGMENT } from "@data/craft"
+import Youtube from "@components/youtube"
 
 import Header from "@sections/indexHeader"
 import RecentPosts from "@sections/indexRecent"
@@ -88,6 +89,7 @@ export async function getStaticProps() {
   const data = await request({
     query: HOME_QUERY,
   })
+
   return {
     props: { data },
   }
@@ -113,11 +115,12 @@ export default function Home({ data }) {
       />
       <Header post={featuredPost} />
       <RecentPosts posts={recentPosts} />
-      <Wallflower />
+      <Youtube />
       <HomeSection posts={homePosts} />
       <Travel posts={travelPosts} />
       <Fashion posts={fashionPosts} />
       <Shop />
+      <Wallflower />
       <About />
     </React.Fragment>
   )
