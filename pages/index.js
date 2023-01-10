@@ -86,7 +86,7 @@ const HOME_QUERY = gql`
 `
 
 export async function getStaticProps() {
-  const videoListEndpoint = `${process.env.NEXT_PUBLIC_YOUTUBE_API_URL}/search?part=snippet&channelId=UChgmwsttG2qzHhPPlva1auA&maxResults=15&order=date&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`
+  const videoListEndpoint = `${process.env.YOUTUBE_API_URL}/search?part=snippet&channelId=UChgmwsttG2qzHhPPlva1auA&maxResults=15&order=date&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`
 
   const response = await fetch(videoListEndpoint)
   const allVideos = await response.json()
@@ -95,7 +95,7 @@ export async function getStaticProps() {
     .map((video) => video.id.videoId)
     .join("&id=")
 
-  const videoDetailsEndpoint = `${process.env.NEXT_PUBLIC_YOUTUBE_API_URL}/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${allVideosIds}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`
+  const videoDetailsEndpoint = `${process.env.YOUTUBE_API_URL}/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${allVideosIds}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`
 
   const responseDetails = await fetch(videoDetailsEndpoint)
   const videos = await responseDetails.json()
