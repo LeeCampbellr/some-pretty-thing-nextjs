@@ -8,6 +8,7 @@ module.exports = withReactSvg({
       "dev.someprettything.com",
       "spt.nyc3.digitaloceanspaces.com",
       "img.shopstyle-cdn.com",
+      "i.ytimg.com",
     ],
   },
   sassOptions: {

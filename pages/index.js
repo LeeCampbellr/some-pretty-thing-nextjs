@@ -4,6 +4,7 @@ import Image from "next/image"
 import { gql } from "graphql-request"
 
 import { request, POST_FRAGMENT } from "@data/craft"
+import Youtube from "@components/youtube"
 
 import Header from "@sections/indexHeader"
 import RecentPosts from "@sections/indexRecent"
@@ -85,15 +86,30 @@ const HOME_QUERY = gql`
 `
 
 export async function getStaticProps() {
+  const videoListEndpoint = `${process.env.YOUTUBE_API_URL}/search?part=snippet&channelId=UChgmwsttG2qzHhPPlva1auA&maxResults=15&order=date&key=${process.env.YOUTUBE_API_KEY}`
+
+  const response = await fetch(videoListEndpoint)
+  const allVideos = await response.json()
+
+  const allVideosIds = allVideos?.items
+    .map((video) => video.id.videoId)
+    .join("&id=")
+
+  const videoDetailsEndpoint = `${process.env.YOUTUBE_API_URL}/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${allVideosIds}&key=${process.env.YOUTUBE_API_KEY}`
+
+  const responseDetails = await fetch(videoDetailsEndpoint)
+  const videos = await responseDetails.json()
+
   const data = await request({
     query: HOME_QUERY,
   })
+
   return {
-    props: { data },
+    props: { data, videos },
   }
 }
 
-export default function Home({ data }) {
+export default function Home({ data, videos, allVideos }) {
   const {
     home,
     featuredPost,
@@ -113,11 +129,12 @@ export default function Home({ data }) {
       />
       <Header post={featuredPost} />
       <RecentPosts posts={recentPosts} />
-      <Wallflower />
+      <Youtube videos={videos} />
       <HomeSection posts={homePosts} />
       <Travel posts={travelPosts} />
       <Fashion posts={fashionPosts} />
       <Shop />
+      <Wallflower />
       <About />
     </React.Fragment>
   )
