@@ -86,16 +86,30 @@ const HOME_QUERY = gql`
 `
 
 export async function getStaticProps() {
+  const videoListEndpoint = `${process.env.NEXT_PUBLIC_YOUTUBE_API_URL}/search?part=snippet&channelId=UChgmwsttG2qzHhPPlva1auA&maxResults=15&order=date&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`
+
+  const response = await fetch(videoListEndpoint)
+  const allVideos = await response.json()
+
+  const allVideosIds = allVideos?.items
+    .map((video) => video.id.videoId)
+    .join("&id=")
+
+  const videoDetailsEndpoint = `${process.env.NEXT_PUBLIC_YOUTUBE_API_URL}/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${allVideosIds}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`
+
+  const responseDetails = await fetch(videoDetailsEndpoint)
+  const videos = await responseDetails.json()
+
   const data = await request({
     query: HOME_QUERY,
   })
 
   return {
-    props: { data },
+    props: { data, videos },
   }
 }
 
-export default function Home({ data }) {
+export default function Home({ data, videos }) {
   const {
     home,
     featuredPost,
@@ -104,6 +118,8 @@ export default function Home({ data }) {
     fashionPosts,
     travelPosts,
   } = data
+
+  console.log(videos)
 
   return (
     <React.Fragment>
@@ -115,7 +131,7 @@ export default function Home({ data }) {
       />
       <Header post={featuredPost} />
       <RecentPosts posts={recentPosts} />
-      <Youtube />
+      <Youtube videos={videos} />
       <HomeSection posts={homePosts} />
       <Travel posts={travelPosts} />
       <Fashion posts={fashionPosts} />

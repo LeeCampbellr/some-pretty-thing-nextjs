@@ -53,6 +53,10 @@ export default function PostHeader({ postHeader }) {
 }
 
 const ImageWrapper = styled.div`
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+
   span {
     width: 100% !important;
   }
