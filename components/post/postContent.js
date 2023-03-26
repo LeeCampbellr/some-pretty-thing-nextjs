@@ -8,6 +8,7 @@ import contentIntroShop from "@post/blocks/contentIntroShop"
 import contentIntroSponsored from "@post/blocks/contentIntroSponsored"
 import contentSplit from "@post/blocks/contentSplit"
 import contentSplitImage from "@post/blocks/contentSplitImage"
+import iframe from "@post/blocks/iframe"
 import image from "@post/blocks/image"
 import imageGallery from "@post/blocks/imageGallery"
 import imageSplit from "@post/blocks/imageSplit"
@@ -26,6 +27,7 @@ export default function PostContent({ postBlocks }) {
     contentIntroSponsored,
     contentSplit,
     contentSplitImage,
+    iframe,
     image,
     imageGallery,
     imageSplit,

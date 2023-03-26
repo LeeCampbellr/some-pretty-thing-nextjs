@@ -96,6 +96,14 @@ export const FRAGMENT_POST_CONTENT_SPLIT_IMAGE = gql`
   }
 `
 
+export const FRAGMENT_POST_IFRAME = gql`
+  fragment iframe on postContent_iframe_BlockType {
+    typeHandle
+    id
+    embed
+  }
+`
+
 export const FRAGMENT_POST_IMAGE = gql`
   fragment image on postContent_image_BlockType {
     id

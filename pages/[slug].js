@@ -21,6 +21,7 @@ import {
   FRAGMENT_POST_CONTENT_INTRO_SPONSORED,
   FRAGMENT_POST_CONTENT_SPLIT,
   FRAGMENT_POST_CONTENT_SPLIT_IMAGE,
+  FRAGMENT_POST_IFRAME,
   FRAGMENT_POST_IMAGE,
   FRAGMENT_POST_IMAGE_GALLERY,
   FRAGMENT_POST_IMAGE_SPLIT,
@@ -101,6 +102,7 @@ export async function getStaticProps({ params }) {
             ...contentIntroSponsored
             ...contentSplit
             ...contentSplitImage
+            ...iframe
             ...image
             ...imageGallery
             ...imageSplit
@@ -127,6 +129,7 @@ export async function getStaticProps({ params }) {
     ${FRAGMENT_POST_CONTENT_INTRO_SPONSORED},
     ${FRAGMENT_POST_CONTENT_SPLIT},
     ${FRAGMENT_POST_CONTENT_SPLIT_IMAGE},
+    ${FRAGMENT_POST_IFRAME},
     ${FRAGMENT_POST_IMAGE},
     ${FRAGMENT_POST_IMAGE_GALLERY},
     ${FRAGMENT_POST_IMAGE_SPLIT},
