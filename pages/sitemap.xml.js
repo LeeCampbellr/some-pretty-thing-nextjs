@@ -97,7 +97,7 @@ const createSitemap = (
             .map((post) => {
               return `
                 <url>
-                  <loc>${`https//someprettything.com/${post.slug}`}</loc>
+                  <loc>${`https://someprettything.com/${post.slug}`}</loc>
                   <lastmod>${post.updatedAt}</lastmod>
                   <priority>0.7</priority>
                 </url>
@@ -109,7 +109,7 @@ const createSitemap = (
               .map((category) => {
                 return `
                 <url>
-                  <loc>${`https//someprettything.com/category/${category.slug}`}</loc>
+                  <loc>${`https://someprettything.com/category/${category.slug}`}</loc>
                   <lastmod>${category.updatedAt}</lastmod>
                   <priority>0.5</priority>
                 </url>
