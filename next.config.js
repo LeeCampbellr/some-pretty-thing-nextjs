@@ -1,7 +1,10 @@
-const withReactSvg = require("next-react-svg")
 const path = require("path")
 
-module.exports = withReactSvg({
+const nextReactSvgConfig = {
+  include: path.resolve(__dirname, "assets"),
+}
+
+const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: [
@@ -14,9 +17,8 @@ module.exports = withReactSvg({
   sassOptions: {
     includePaths: [path.join(__dirname, "utils")],
   },
+}
 
-  include: path.resolve(__dirname, "assets"),
-  webpack(config, options) {
-    return config
-  },
-})
+const withReactSvg = require("next-react-svg")(nextReactSvgConfig)
+
+module.exports = withReactSvg(nextConfig)
