@@ -35,6 +35,9 @@ const Navigation = () => {
   }
 
   const resetScroll = () => {
+    if (window.innerWidth < 1200) {
+      toggleNav()
+    }
     clearQueueScrollLocks(navigation)
     enablePageScroll(navigation)
   }
