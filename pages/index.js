@@ -33,7 +33,7 @@ const HOME_QUERY = gql`
         metaDescription
       }
     }
-    featuredPost: entry {
+    featuredPost: entry(sectionId: "10") {
       ... on posts_post_Entry {
         id
         title
@@ -53,7 +53,7 @@ const HOME_QUERY = gql`
         }
       }
     }
-    recentPosts: entries(limit: 5, offset: 1) {
+    recentPosts: entries(sectionId: "10", limit: 5, offset: 1) {
       ...PostFragment
     }
     homePosts: entries(
