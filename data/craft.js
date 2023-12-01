@@ -20,6 +20,8 @@ export const client = new GraphQLClient(
   }
 )
 
+export const fetcher = (query, variables) => client.request(query, variables)
+
 export const POST_FRAGMENT = gql`
   fragment PostFragment on posts_post_Entry {
     id

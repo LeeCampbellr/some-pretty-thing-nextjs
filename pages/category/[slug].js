@@ -10,7 +10,7 @@ import PostCard from "@components/post/postCard"
 import { media } from "@utils/media"
 import Navigation from "@components/category/navigation"
 import { Button } from "@components/links"
-import { client, request, POST_FRAGMENT } from "@data/craft"
+import { client, request, fetcher, POST_FRAGMENT } from "@data/craft"
 import SEO from "@utils/seo/seo"
 
 export async function getStaticPaths() {
@@ -93,8 +93,6 @@ export default function Category({ cat }) {
     }
     ${POST_FRAGMENT}
   `
-
-  const fetcher = (query, variables) => client.request(query, variables)
 
   const { data, error, isValidating, mutate, size, setSize } = useSWRInfinite(
     (index) => [

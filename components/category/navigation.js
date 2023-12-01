@@ -68,7 +68,7 @@ const Categories = styled.nav`
   display: flex;
   flex-direction: column;
   margin-top: var(--spacingMedium);
-  margin-bottom: var(--spacingLarge);
+  margin-bottom: var(--spacingMedium);
   max-height: ${(props) => (props.dropdown === true ? "100rem" : "2.75rem")};
   overflow: hidden;
   position: relative;
