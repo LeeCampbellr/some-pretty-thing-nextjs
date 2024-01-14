@@ -18,12 +18,13 @@ const Navigation = () => {
   const router = useRouter()
   const navigation = useRef(null)
   const [nav, setNav] = useState(false)
+  const [aboutNav, setAboutNav] = useState(false)
+
   const toggleNav = () => {
     setNav(!nav)
     nav === true ? enablePageScroll(navigation) : disablePageScroll(navigation)
   }
 
-  const [aboutNav, setAboutNav] = useState(false)
   const toggleAboutNav = (event) => {
     if (window.innerWidth > 1200) {
       event.preventDefault()
@@ -32,6 +33,11 @@ const Navigation = () => {
       clearQueueScrollLocks(navigation)
       enablePageScroll(navigation)
     }
+  }
+
+  const closeNav = () => {
+    setNav(false)
+    enablePageScroll(navigation)
   }
 
   const resetScroll = () => {
@@ -43,7 +49,7 @@ const Navigation = () => {
   }
 
   useEffect(() => {
-    resetScroll()
+    closeNav()
     setAboutNav(false)
   }, [router.pathname])
 
@@ -51,9 +57,10 @@ const Navigation = () => {
     <NavigationContainer ref={navigation}>
       <NavigationAbout show={aboutNav} />
       <NavigationBackground />
+
       <Hamburger>
         <svg
-          onClick={toggleNav}
+          onClick={() => toggleNav()}
           className={nav === true ? "active" : ""}
           viewBox="0 0 100 100"
           width="80"

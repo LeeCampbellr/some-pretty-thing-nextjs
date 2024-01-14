@@ -10,7 +10,6 @@
   "dependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.75",
     "@radix-ui/react-aspect-ratio": "^1.0.1",
-    "@segment/snippet": "^4.15.3",
     "@svgr/webpack": "^8.1.0",
     "dayjs": "^1.11.2",
     "graphql": "^16.5.0",
