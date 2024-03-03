@@ -18,7 +18,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/icons": ["./components/icons/index.tsx"]
     }
   },
   "include": [
