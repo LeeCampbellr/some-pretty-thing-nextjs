@@ -53,7 +53,7 @@ const globalCss = defineGlobalStyles({
     marginBottom: "$h6",
   },
 
-  "p, ul, li, ol, a": {
+  "p, ul, li, ol": {
     fontFamily: "var(--font-denton)",
     fontVariationSettings: "'opsz' 10, 'wdth' 500, 'wght' 200",
     fontSize: "$p",
@@ -62,7 +62,11 @@ const globalCss = defineGlobalStyles({
   },
 
   a: {
+    fontFamily: "var(--font-denton)",
+    fontVariationSettings: "'opsz' 10, 'wdth' 500, 'wght' 200",
+    fontSize: "inherit",
     cursor: "pointer",
+    color: "$midContrast",
   },
 });
 
@@ -86,6 +90,9 @@ export default defineConfig({
   // Useful for theme customization
   theme: {
     tokens: {
+      aspectRatios: {
+        "3:4": { value: "3 / 4" },
+      },
       colors: {
         tan: {
           1: { value: "#FDFCFD" },
@@ -94,18 +101,18 @@ export default defineConfig({
           4: { value: "#E3E1DB" },
           5: { value: "#C1BFBA" },
           6: { value: "#A09E99" },
-          7: { value: "#7E7C78" },
-          8: { value: "#5C5A57" },
-          9: { value: "#393936" },
-          10: { value: "#171716" },
+          7: { value: "#999380" },
+          8: { value: "#867F6C" },
+          9: { value: "#373329" },
+          10: { value: "#1D1B15" },
         },
       },
       fontSizes: {
         $h1: { value: "clamp(2.5rem, 3.695vw + 1.544rem, 4.5rem)" },
-        $h2: { value: "clamp(2rem, 3.233vw + 1.163rem, 3.75rem)" },
-        $h3: { value: "clamp(1.75rem, 3.233vw + 0.913rem, 3.5rem)" },
-        $h4: { value: "clamp(1.5rem, 1.848vw + 1.022rem, 2.5rem)" },
-        $h5: { value: "clamp(1.25rem, 1.386vw + 0.891rem, 2rem)" },
+        $h2: { value: "clamp(2rem, 3.233vw + 1.163rem, 3.5rem)" },
+        $h3: { value: "clamp(1.75rem, 3.233vw + 0.913rem, 2.5rem)" },
+        $h4: { value: "clamp(1.5rem, 1.848vw + 1.022rem, 2rem)" },
+        $h5: { value: "clamp(1.25rem, 1.386vw + 0.891rem, 1.5rem)" },
         $h6: { value: "0.75rem" },
         $p: { value: "clamp(1rem, 0.231vw + 0.94rem, 1.125rem)" },
         $sm: { value: "0.875rem" },
@@ -143,6 +150,11 @@ export default defineConfig({
         $h5: { value: "clamp(0.75rem, 0.6667rem + 0.4167vi, 1rem)" },
         $h6: { value: "clamp(1rem, 0.8333rem + 0.8333vi, 1.5rem)" },
         $p: { value: "clamp(1rem, 0.8333rem + 0.8333vi, 1.5rem)" },
+      },
+      zIndex: {
+        $header: { value: "5" },
+        $nav: { value: "10" },
+        $menu: { value: "25" },
       },
     },
     semanticTokens: {
@@ -183,6 +195,14 @@ export default defineConfig({
         slideOut: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(100%)" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        fadeOut: {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
         },
       },
     },

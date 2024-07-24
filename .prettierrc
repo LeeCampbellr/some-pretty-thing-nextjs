@@ -4,10 +4,11 @@
   "singleQuote": false,
   "importOrder": [
     "^[./]",
-    "^@/data/(.*)$",
+    "^@/lib/(.*)$",
     "^@/styled-system/(.*)$",
     "^@/components/(.*)$",
     "^@/icons",
+    "^@/images/(.*)$",
     "^@/public/(.*)$"
   ],
   "importOrderBuiltinModulesToTop": false,

@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: "spt.nyc3.digitaloceanspaces.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+        port: "",
+      },
     ],
   },
 };

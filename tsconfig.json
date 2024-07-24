@@ -19,7 +19,10 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@/icons": ["./components/icons/index.tsx"]
+      "@/components/*": ["./app/_components/*"],
+      "@/icons": ["./app/_icons/index.tsx"],
+      "@/images/*": ["./app/_images/*"],
+      "@/lib/*": ["./app/_lib/*"]
     }
   },
   "include": [

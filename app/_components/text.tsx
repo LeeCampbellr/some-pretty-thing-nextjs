@@ -5,11 +5,19 @@ interface Props {
   children?: React.ReactNode;
 }
 
-export default function Text({ as: Element = "p", content, children }: Props) {
+export default function Text({
+  as: Element = "p",
+  content,
+  children,
+  ...props
+}: Props) {
   return content ? (
-    <Element dangerouslySetInnerHTML={{ __html: content }} />
+    <Element
+      className={text({ ...props })}
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
   ) : (
-    <Element>{children}</Element>
+    <Element className={text({ ...props })}>{children}</Element>
   );
 }
 

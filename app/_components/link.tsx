@@ -1,19 +1,17 @@
-import NextLink from "next/link";
-
 import { styled } from "@/styled-system/jsx";
 
 interface Props {
   children: React.ReactNode;
-  href: string;
 }
 
-export default function Link({ children, href }: Props) {
-  return <StyledLink href={href}>{children}</StyledLink>;
+export default function Link({ children, ...props }: Props) {
+  return <StyledLink {...props}>{children}</StyledLink>;
 }
 
-const StyledLink = styled(NextLink, {
+const StyledLink = styled("span", {
   base: {
     color: "$midContrast",
+    cursor: "pointer",
     fontFamily: "$sans",
     fontSize: "$h6",
     fontVariationSettings: "'opsz' 1, 'wdth' 100, 'wght' 400",
@@ -31,8 +29,6 @@ const StyledLink = styled(NextLink, {
       height: "1px",
       width: "100%",
       transform: "scale(0.5)",
-      transformOrigin: "left center",
-      left: "0",
       transition: "transform 500ms ease-in-out",
     },
 
@@ -43,5 +39,33 @@ const StyledLink = styled(NextLink, {
         transform: "scale(1)",
       },
     },
+  },
+
+  variants: {
+    align: {
+      left: {
+        _after: {
+          left: "0",
+          transformOrigin: "left center",
+        },
+      },
+      center: {
+        _after: {
+          left: "0",
+          right: "0",
+          transformOrigin: "center",
+        },
+      },
+      right: {
+        _after: {
+          right: "0",
+          transformOrigin: "right center",
+        },
+      },
+    },
+  },
+
+  defaultVariants: {
+    align: "left",
   },
 });

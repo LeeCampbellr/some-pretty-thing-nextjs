@@ -12,6 +12,26 @@ const HOME_QUERY = `
           url
         }
         metaDescription
+        popularPosts {
+          ... on posts_post_Entry {
+            id
+            title
+            slug
+            postDate
+            excerpt
+            categories {
+              title
+              slug
+            }
+            featuredImage {
+              blurhashUri: url @assetToBlurHash
+              url
+              title
+              width
+              height
+            }
+          }
+        }
       }
     }
     featuredPost: entry(sectionId: "10") {
@@ -25,7 +45,6 @@ const HOME_QUERY = `
           title
           slug
         }
-        homeHeaderLayout
         featuredImage {
           blurhashUri: url @assetToBlurHash
           url
@@ -33,6 +52,13 @@ const HOME_QUERY = `
           width
           height
         }
+      }
+    }
+    recentPosts: entries(sectionId: "10") {
+      ... on posts_post_Entry {
+        id
+        title
+        slug
       }
     }
   }

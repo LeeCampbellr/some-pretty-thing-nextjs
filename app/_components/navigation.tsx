@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { styled } from "@/styled-system/jsx";
 
 import Logo from "@/components/logo";
@@ -14,31 +16,47 @@ export default function Navigation({ theme }: Props) {
     <Nav data-theme={theme}>
       <NavContent>
         <List variant="left">
-          <ListItem>Seasonal Living</ListItem>
-          <ListItem>In My Wardrobe</ListItem>
-          <ListItem>In The Garden</ListItem>
+          <ListItem>
+            <Link href="/category/seasonal-living">Seasonal Living</Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/category/in-my-wardrobe">In My Wardrobe</Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/category/in-the-garden">In The Garden</Link>
+          </ListItem>
         </List>
 
-        <div>
+        <LogoLink href="/">
           <Logo size="lg" />
-        </div>
+        </LogoLink>
 
         <List variant="right">
           <ListItem>Shop</ListItem>
           <ListItem>
             <SocialList>
               <li>
-                <InstagramIcon />
+                <a href="">
+                  <InstagramIcon />
+                </a>
               </li>
               <li>
-                <PinterestIcon />
+                <a href="https://www.pinterest.com/littlelew/" target="_blank">
+                  <PinterestIcon />
+                </a>
               </li>
               <li>
-                <YoutubeIcon />
+                <a
+                  href="https://www.youtube.com/@Emily_Campbell"
+                  target="_blank"
+                >
+                  <YoutubeIcon />
+                </a>
               </li>
             </SocialList>
           </ListItem>
-          <ListItem>
+
+          <ListItem mobile="true">
             <NavigationMenu />
           </ListItem>
         </List>
@@ -54,27 +72,41 @@ const Nav = styled("nav", {
     left: "0",
     width: "100%",
     color: "$hiContrast",
+    zIndex: "$nav",
   },
 });
 
 const NavContent = styled("div", {
   base: {
-    height: "10rem",
     maxWidth: "92.5rem",
     margin: "0 auto",
     display: "grid",
-    gridTemplateColumns: "1fr auto 1fr",
     alignItems: "center",
+    gridTemplateColumns: "80px auto 80px",
     padding: "0 clamp(1rem, 7.39vw + -0.912rem, 5rem)",
+    height: "7.5rem",
+
+    lg: {
+      height: "10rem",
+      gridTemplateColumns: "1fr auto 1fr",
+    },
+  },
+});
+
+const LogoLink = styled(Link, {
+  base: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
 const List = styled("ul", {
   base: {
     alignItems: "center",
-    display: "flex",
     listStyle: "none",
     margin: "0",
+    display: "flex",
   },
 
   variants: {
@@ -85,6 +117,11 @@ const List = styled("ul", {
         "& > li": {
           padding: "0.25rem 0.75rem",
           margin: "0",
+          display: "none",
+
+          lg: {
+            display: "flex",
+          },
 
           "&:first-of-type": {
             paddingLeft: "0",
@@ -99,8 +136,14 @@ const List = styled("ul", {
           borderColor: "$border",
           padding: "0.25rem 2rem",
           margin: "0",
+          display: "none",
+
+          lg: {
+            display: "flex",
+          },
 
           "&:last-of-type": {
+            display: "flex",
             borderRight: "none",
             paddingRight: "0",
           },
@@ -114,10 +157,16 @@ const ListItem = styled("li", {
   base: {
     fontSize: "0.75rem",
     fontVariationSettings: "'opsz' 10, 'wdth' 480, 'wght' 300",
-    letterSpacing: "0.1em",
+    letterSpacing: "0.05em",
     lineHeight: "1",
     textTransform: "uppercase",
     margin: "0",
+  },
+
+  variants: {
+    menu: {
+      true: {},
+    },
   },
 });
 
@@ -125,7 +174,7 @@ const SocialList = styled("ul", {
   base: {
     listStyle: "none",
     display: "flex",
-    gap: "$sm",
+    gap: "4",
     margin: "0",
 
     "& li": {

@@ -1,9 +1,12 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
+import Link from "next/link";
 import { useState } from "react";
 
 import { styled } from "@/styled-system/jsx";
+
+import Heading from "@/components/heading";
 
 import { CrossIcon } from "@/icons";
 
@@ -28,25 +31,37 @@ export default function NavigationMenu() {
         <DialogOverlay />
 
         <DialogContent>
-          <Dialog.Close>
+          <Close>
             <CrossIcon />
-          </Dialog.Close>
+          </Close>
 
-          <ul>
-            <li>Seasonal Living</li>
-            <li>In My Wardrobe</li>
-            <li>In The Garden</li>
-            <li>At Home With</li>
-            <li>Wallpapers</li>
-          </ul>
+          <List>
+            <ListItem>
+              <Link href="/">Seasonal Living</Link>
+            </ListItem>
+            <ListItem>
+              <Link href="/">In My Wardrobe</Link>
+            </ListItem>
+            <ListItem>
+              <Link href="/">In The Garden</Link>
+            </ListItem>
+            <ListItem>
+              <Link href="/">At Home With</Link>
+            </ListItem>
+            <ListItem>
+              <Link href="/">Wallpapers</Link>
+            </ListItem>
+          </List>
 
           <Grid>
             <div></div>
 
             <div>
-              <h6>Contact</h6>
+              <Heading as="h6" margin="0">
+                Contact
+              </Heading>
 
-              <Email>
+              <Email href="mailto:someprettything@gmail.com">
                 <i>someprettything@gmail.com</i>
               </Email>
             </div>
@@ -119,16 +134,25 @@ const Hamburger = styled("div", {
 const DialogOverlay = styled(Dialog.Overlay, {
   base: {
     bg: "rgba( 0, 0, 0, 0.75 )",
-
     position: "fixed",
     inset: 0,
-    zIndex: 1,
+    zIndex: "$menu",
     backdropFilter: "blur(8px)",
+    transition: "all 300ms ease-in-out",
+
+    '&[data-state="open"]': {
+      animation: "fadeIn 200ms ease-in-out",
+    },
+
+    '&[data-state="closed"]': {
+      animation: "fadeOut 200ms ease-in-out",
+    },
   },
 });
 
 const DialogContent = styled(Dialog.Content, {
   base: {
+    zIndex: "$menu",
     background: "$background",
     minHeight: "0",
     width: "100%",
@@ -137,7 +161,6 @@ const DialogContent = styled(Dialog.Content, {
     position: "fixed",
     top: "0",
     right: "0",
-    zIndex: "1",
     display: "flex",
     flexDir: "column",
 
@@ -151,6 +174,44 @@ const DialogContent = styled(Dialog.Content, {
   },
 });
 
+const Close = styled(Dialog.Close, {
+  base: {
+    cursor: "pointer",
+    position: "absolute",
+    right: "1rem",
+    top: "1rem",
+
+    md: {
+      right: "2.5rem",
+      top: "2.5rem",
+    },
+
+    lg: {
+      right: "3rem",
+      top: "3rem",
+    },
+  },
+});
+
+const List = styled("ul", {
+  base: {
+    margin: "0",
+    padding: "2.5rem 1rem",
+
+    sm: { padding: "3rem 2rem" },
+    md: { padding: "5rem 3rem" },
+    lg: { padding: "7.5rem 5rem" },
+  },
+});
+
+const ListItem = styled("li", {
+  base: {
+    margin: "0",
+    fontSize: "$h4",
+    padding: "0.25rem 0",
+  },
+});
+
 const Grid = styled("div", {
   base: {
     display: "grid",
@@ -159,15 +220,32 @@ const Grid = styled("div", {
     borderTop: "1px solid",
     borderColor: "$border",
     marginTop: "auto",
+    alignItems: "center",
 
     "& > div:first-of-type": {
       borderRight: "1px solid ",
       borderRightColor: "$border",
+      width: "100%",
+      height: "100%",
+    },
+
+    "& > div:last-of-type": {
+      padding: "8",
     },
   },
 });
 
-const Email = styled("h5", {
-  fontSize: "1.125rem",
-  margin: "0",
+const Email = styled("a", {
+  base: {
+    fontSize: "1rem",
+    margin: "0",
+
+    lg: {
+      fontSize: "1.5rem",
+    },
+
+    _hover: {
+      textDecoration: "underline",
+    },
+  },
 });

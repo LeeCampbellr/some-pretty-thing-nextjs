@@ -33,7 +33,7 @@ export default function RootLayout({
 // FONTS
 
 const generalSans = localFont({
-  src: "../fonts/general-sans.woff2",
+  src: "./_fonts/general-sans.woff2",
   variable: "--font-generalSans",
   fallback: ["system-ui", "arial"],
 });
@@ -41,12 +41,12 @@ const generalSans = localFont({
 const denton = localFont({
   src: [
     {
-      path: "../fonts/denton.woff2",
+      path: "./_fonts/denton.woff2",
       style: "normal",
       weight: "200 700",
     },
     {
-      path: "../fonts/denton-italic.woff2",
+      path: "./_fonts/denton-italic.woff2",
       style: "italic",
       weight: "200 700",
     },

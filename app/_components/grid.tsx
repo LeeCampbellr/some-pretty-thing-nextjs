@@ -24,12 +24,19 @@ const Wrapper = styled("div", {
       1: { gridTemplateColumns: "1fr" },
       2: {
         gridTemplateColumns: "repeat(1fr)",
-        md: {
-          gridTemplateColumns: "repeat(2, 1fr)",
-        },
+
+        md: { gridTemplateColumns: "repeat(2, 1fr)" },
       },
-      3: { gridTemplateColumns: "repeat(3, 1fr)" },
-      4: { gridTemplateColumns: "repeat(4, 1fr)" },
+      3: {
+        gridTemplateColumns: "repeat(1fr)",
+
+        md: { gridTemplateColumns: "repeat(3, 1fr)" },
+      },
+      4: {
+        gridTemplateColumns: "1fr",
+
+        md: { gridTemplateColumns: "repeat(1, 1fr)" },
+      },
     },
     gap: {
       xs: { gap: "clamp(0.75rem, 0.6667rem + 0.4167vi, 1rem)" },

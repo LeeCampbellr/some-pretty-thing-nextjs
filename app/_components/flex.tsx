@@ -1,7 +1,12 @@
 import { styled } from "@/styled-system/jsx";
 
-export default function Flex({ children }: { children: React.DOMElement }) {
-  return <Wrapper>{children}</Wrapper>;
+export default function Flex({
+  children,
+  ...props
+}: {
+  children: React.DOMElement;
+}) {
+  return <Wrapper {...props}>{children}</Wrapper>;
 }
 
 const Wrapper = styled("div", {
