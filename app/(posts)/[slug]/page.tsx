@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ALL_POSTS_QUERY, POST_QUERY } from "./query";
+import { ALL_POSTS_QUERY, POST_QUERY, PostProps } from "./query";
 
 import { fetchCraftCMS } from "@/lib/craftcms";
 
@@ -9,7 +9,7 @@ import { AspectRatio, styled } from "@/styled-system/jsx";
 export async function generateStaticParams() {
   const posts = await fetchCraftCMS({ query: ALL_POSTS_QUERY });
 
-  return posts.entries.map((post) => ({
+  return posts.entries.map((post: PostProps["post"]) => ({
     slug: post.slug,
   }));
 }
@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <Header>
-      <AspectRatio ratio={"4 / 3"}>
+      <AspectRatio ratio={4 / 3}>
         <Image
           src={post.featuredImage[0].url}
           alt={post.featuredImage[0].title}
@@ -40,5 +40,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
 const Header = styled("div", {
   base: {
     display: "block",
+    width: "100%",
   },
 });

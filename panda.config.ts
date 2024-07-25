@@ -90,9 +90,6 @@ export default defineConfig({
   // Useful for theme customization
   theme: {
     tokens: {
-      aspectRatios: {
-        "3:4": { value: "3 / 4" },
-      },
       colors: {
         tan: {
           1: { value: "#FDFCFD" },
@@ -105,6 +102,9 @@ export default defineConfig({
           8: { value: "#867F6C" },
           9: { value: "#373329" },
           10: { value: "#1D1B15" },
+        },
+        overlay: {
+          base: { value: "rgba( 0, 0, 0, 0.75 )" },
         },
       },
       fontSizes: {

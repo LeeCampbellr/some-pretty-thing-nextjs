@@ -6,6 +6,7 @@
   ],
   "plugins": ["unused-imports"],
   "rules": {
+    "@pandacss/no-dynamic-styling": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",
     "@next/next/no-html-link-for-pages": "off",

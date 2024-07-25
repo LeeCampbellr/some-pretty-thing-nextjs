@@ -1,14 +1,7 @@
+import { cva } from "@/styled-system/css";
 import { styled } from "@/styled-system/jsx";
 
-interface Props {
-  children?: React.ReactNode;
-}
-
-export default function Grid({ children, ...props }: Props) {
-  return <Wrapper {...props}>{children}</Wrapper>;
-}
-
-const Wrapper = styled("div", {
+const gridStyles = cva({
   base: {
     display: "grid",
     width: "100%",
@@ -41,7 +34,6 @@ const Wrapper = styled("div", {
     gap: {
       xs: { gap: "clamp(0.75rem, 0.6667rem + 0.4167vi, 1rem)" },
       sm: { gap: "clamp(0.75rem, 0.8333rem + 0.8333vi, 1.5rem)" },
-      md: { gap: "clamp(1rem, 0.5rem + 2.5vi, 2.5rem)" },
       md: { gap: "clamp(1rem, 0.0833rem + 4.5833vi, 3.75rem)" },
       lg: { gap: "clamp(1rem, -1.1667rem + 10.8333vi, 7.5rem)" },
       xl: { gap: "clamp(1rem, -2rem + 15vi, 10rem)" },
@@ -53,3 +45,7 @@ const Wrapper = styled("div", {
     },
   },
 });
+
+const Grid = styled("div", gridStyles);
+
+export default Grid;

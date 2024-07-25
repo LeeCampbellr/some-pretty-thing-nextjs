@@ -1,14 +1,7 @@
+import { cva } from "@/styled-system/css";
 import { styled } from "@/styled-system/jsx";
 
-interface Props {
-  children: React.ReactNode;
-}
-
-export default function Link({ children, ...props }: Props) {
-  return <StyledLink {...props}>{children}</StyledLink>;
-}
-
-const StyledLink = styled("span", {
+const linkStyles = cva({
   base: {
     color: "$midContrast",
     cursor: "pointer",
@@ -69,3 +62,7 @@ const StyledLink = styled("span", {
     align: "left",
   },
 });
+
+const Link = styled("span", linkStyles);
+
+export default Link;

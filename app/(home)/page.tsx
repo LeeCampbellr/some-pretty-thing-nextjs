@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-import Post from "./_components/post";
+import { Post, PostProps } from "./_components/post";
 import PostcardsFrom from "./_components/postcardsFrom";
 import Youtube from "./_components/youtube";
 import HOME_QUERY from "./query";
 
 import { fetchCraftCMS } from "@/lib/craftcms";
-import { fetchYoutubeVideos } from "@/lib/youtube";
+import { fetchYoutubeVideos, YoutubeVideoProps } from "@/lib/youtube";
 
 import { css } from "@/styled-system/css";
 import { AspectRatio, styled } from "@/styled-system/jsx";
@@ -61,7 +61,7 @@ export default async function Home() {
             />
           </AspectRatio>
 
-          <div>
+          <a href={data.featuredPost.slug}>
             <h6>My Most Recent Post</h6>
             <h2
               className={css({
@@ -71,8 +71,8 @@ export default async function Home() {
               {data.featuredPost.title}
             </h2>
             <p>{data.featuredPost.excerpt}</p>
-            <Link href={data.featuredPost.slug}>Read More</Link>
-          </div>
+            <Link>Read More</Link>
+          </a>
         </Grid>
       </Container>
 
@@ -80,9 +80,11 @@ export default async function Home() {
         <h6>My Popular Posts</h6>
 
         <Grid columns={3} gap="md">
-          {data.home.popularPosts.map((post, index) => {
-            return <Post key={index} post={post} />;
-          })}
+          {data.home.popularPosts.map(
+            (post: PostProps["post"], index: number) => {
+              return <Post key={index} post={post} />;
+            }
+          )}
         </Grid>
       </Container>
 
@@ -92,7 +94,7 @@ export default async function Home() {
         <h6>Recent Youtube Videos</h6>
 
         <Grid columns={3} gap="md">
-          {videos.map((video, index) => {
+          {videos.map((video: YoutubeVideoProps["video"], index: number) => {
             return <Youtube video={video} key={index} />;
           })}
         </Grid>

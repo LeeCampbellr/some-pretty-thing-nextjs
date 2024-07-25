@@ -3,6 +3,9 @@ import { cva } from "@/styled-system/css";
 interface Props {
   content?: string;
   children?: React.ReactNode;
+  margin?: string;
+  align?: string;
+  size?: string;
 }
 
 export default function Text({

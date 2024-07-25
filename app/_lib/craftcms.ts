@@ -18,7 +18,15 @@ const dedupedFetch = cache(async (serializedInit) => {
   return responseBody;
 });
 
-export const fetchCraftCMS = async ({ query, variables = {}, revalidate }) => {
+export const fetchCraftCMS = async ({
+  query,
+  variables = {},
+  revalidate,
+}: {
+  query: string;
+  variables?: any;
+  revalidate?: any;
+}) => {
   const apiToken = process.env.CRAFTCMS_API_TOKEN;
 
   const { data } = await dedupedFetch(

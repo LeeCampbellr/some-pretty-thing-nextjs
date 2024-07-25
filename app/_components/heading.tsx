@@ -5,9 +5,15 @@ import { cva } from "@/styled-system/css";
 interface Props {
   as?: keyof JSX.IntrinsicElements;
   children?: React.ReactNode;
+  align?: string;
+  margin?: string;
 }
 
-export default function Heading({ as: Element = "h1", children, ...props }) {
+export default function Heading({
+  as: Element = "h1",
+  children,
+  ...props
+}: Props) {
   return <Element className={heading({ ...props })}>{children}</Element>;
 }
 

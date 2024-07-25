@@ -133,7 +133,7 @@ const Hamburger = styled("div", {
 
 const DialogOverlay = styled(Dialog.Overlay, {
   base: {
-    bg: "rgba( 0, 0, 0, 0.75 )",
+    bg: "overlay.base",
     position: "fixed",
     inset: 0,
     zIndex: "$menu",

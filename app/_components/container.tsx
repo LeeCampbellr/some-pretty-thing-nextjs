@@ -1,15 +1,7 @@
+import { cva } from "@/styled-system/css";
 import { styled } from "@/styled-system/jsx";
 
-export default function Container({
-  children,
-  ...props
-}: {
-  children: React.DOMElement;
-}) {
-  return <Wrapper {...props}>{children}</Wrapper>;
-}
-
-const Wrapper = styled("div", {
+const containerStyles = cva({
   base: {
     width: "100%",
     maxWidth: "92.5rem",
@@ -37,3 +29,7 @@ const Wrapper = styled("div", {
     },
   },
 });
+
+const Container = styled("div", containerStyles);
+
+export default Container;

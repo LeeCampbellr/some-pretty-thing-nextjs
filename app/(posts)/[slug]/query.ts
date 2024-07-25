@@ -1,3 +1,11 @@
+export interface PostProps {
+  post: {
+    id: string;
+    title: string;
+    slug: string;
+  };
+}
+
 export const ALL_POSTS_QUERY = `
   query Posts {
     entries(sectionId: "10") {
@@ -37,44 +45,148 @@ export const POST_QUERY = `
             slug
           }
           postContent {
-
-          }
-        }
-      }
-
-
-
-      postContent: entry(slug: $slug) {
-        ... on posts_post_Entry {
-          postContent {
-            ...brandBlock
-            ...contentCenter
-            ...contentIntroIndex
-            ...contentIntroShop
-            ...contentIntroSponsored
-            ...contentSplit
-            ...contentSplitImage
-            ...iframe
-            ...image
-            ...imageGallery
-            ...imageSplit
-            ...quote
-            ...widget
+            ... on postContent_brandBlock_BlockType {
+              typeHandle
+              id
+              brand {
+                ... on brand_BlockType {
+                  id
+                  image {
+                    url
+                    width
+                    height
+                  }
+                  linkUrl
+                }
+              }
+            }
+            ... on postContent_contentCenter_BlockType {
+              typeHandle
+              id
+              paragraph
+              sectionId
+            }
+            ... on postContent_contentIntroIndex_BlockType {
+              typeHandle
+              id
+              paragraph
+              sections {
+                title
+                sectionId
+              }
+            }
+            ... on postContent_contentIntroShop_BlockType {
+              typeHandle
+              id
+              paragraph
+              sectionId
+              shopIndex {
+                itemTitle
+                link
+              }
+            }
+            ... on postContent_contentIntroSponsored_BlockType {
+              typeHandle
+              id
+              paragraph
+              sectionId
+              sponsoredContent
+              sponsoredLogo {
+                title
+                url
+                width
+                height
+              }
+            }
+            ... on postContent_contentSplit_BlockType {
+              typeHandle
+              id
+              paragraphRight
+              paragraphLeft
+              sectionId
+            }
+            ... on postContent_contentSplitImage_BlockType {
+              alignment
+              id
+              imageSize
+              image {
+                title
+                url
+                kind
+                width
+                height
+              }
+              layout
+              paragraph
+              sectionId
+              typeHandle
+            }
+            ... on postContent_iframe_BlockType {
+              typeHandle
+              id
+              embed
+            }
+            ... on postContent_image_BlockType {
+              id
+              image {
+                title
+                url
+                kind
+                width
+                height
+              }
+              imageSize
+              sectionId
+              typeHandle
+            }
+            ... on postContent_imageGallery_BlockType {
+              typeHandle
+              id
+              alignment
+              gallery {
+                title
+                url
+                kind
+                width
+                height
+              }
+              sectionId
+            }
+            ... on postContent_imageSplit_BlockType {
+              alignment
+              id
+              imageLeft {
+                url
+                title
+                kind
+                width
+                height
+              }
+              imageLeftSize
+              imageRight {
+                url
+                title
+                kind
+                width
+                height
+              }
+              imageRightSize
+              sectionId
+              typeHandle
+            }
+            ... on postContent_quote_BlockType {
+              typeHandle
+              id
+              sectionId
+              quote
+            }
+            ...  on postContent_widget_BlockType {
+              typeHandle
+              id
+              embed
+            }
           }
         }
       }
     }
-    ${FRAGMENT_POST_BRAND_BLOCK},
-    ${FRAGMENT_POST_CONTENT_CENTER},
-    ${FRAGMENT_POST_CONTENT_INTRO_INDEX},
-    ${FRAGMENT_POST_CONTENT_INTRO_SHOP},
-    ${FRAGMENT_POST_CONTENT_INTRO_SPONSORED},
-    ${FRAGMENT_POST_CONTENT_SPLIT},
-    ${FRAGMENT_POST_CONTENT_SPLIT_IMAGE},
-    ${FRAGMENT_POST_IFRAME},
-    ${FRAGMENT_POST_IMAGE},
-    ${FRAGMENT_POST_IMAGE_GALLERY},
-    ${FRAGMENT_POST_IMAGE_SPLIT},
-    ${FRAGMENT_POST_WIDGET},
-    ${FRAGMENT_POST_QUOTE},
   `;

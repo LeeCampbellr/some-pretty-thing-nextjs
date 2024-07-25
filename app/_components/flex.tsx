@@ -1,15 +1,7 @@
+import { cva } from "@/styled-system/css";
 import { styled } from "@/styled-system/jsx";
 
-export default function Flex({
-  children,
-  ...props
-}: {
-  children: React.DOMElement;
-}) {
-  return <Wrapper {...props}>{children}</Wrapper>;
-}
-
-const Wrapper = styled("div", {
+const flexStyles = cva({
   base: {
     display: "flex",
   },
@@ -51,3 +43,7 @@ const Wrapper = styled("div", {
     },
   },
 });
+
+const Flex = styled("div", flexStyles);
+
+export default Flex;

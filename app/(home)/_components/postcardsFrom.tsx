@@ -37,7 +37,7 @@ export default function PostcardsFrom() {
           </ListItem>
         </List>
 
-        <Image />
+        <ImagePlaceholder />
       </Grid>
     </Container>
   );
@@ -114,7 +114,7 @@ const ListItem = styled("li", {
   },
 });
 
-const Image = styled("div", {
+const ImagePlaceholder = styled("div", {
   base: {
     background: "tan.4",
     height: "100%",

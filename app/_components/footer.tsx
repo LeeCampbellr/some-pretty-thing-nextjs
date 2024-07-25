@@ -17,7 +17,7 @@ export default function Footer() {
       <Layout>
         <Column>
           <Content variant="left">
-            <div href="">
+            <div>
               <InstagramImage />
               <Text margin="0">
                 <i>Instagram</i>
