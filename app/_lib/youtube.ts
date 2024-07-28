@@ -63,6 +63,10 @@ export async function fetchYoutubeVideos(desiredCount: number) {
   const fetchMultiplier = 3; // Adjust this value between 3-5 based on your needs
   let maxResults = desiredCount * fetchMultiplier;
 
+  if (!API_URL || !API_KEY) {
+    throw new Error("YouTube API URL or API Key is not defined");
+  }
+
   let videoIds = await fetchVideoIds(API_URL, API_KEY, channelId, maxResults);
   if (!videoIds) return [];
 
@@ -95,7 +99,9 @@ async function fetchVideoIds(
   try {
     const response = await fetch(endpoint);
     const data = await response.json();
-    return data.items.map((video) => video.id.videoId).join("&id=");
+    return data.items
+      .map((item: { id: { videoId: string } }) => item.id.videoId)
+      .join("&id=");
   } catch (error) {
     return null;
   }
@@ -115,12 +121,12 @@ async function fetchVideoDetails(
   }
 }
 
-export function filterVideosShorterThanMinute(videos) {
+export function filterVideosShorterThanMinute(videos: YoutubeVideoProps[]) {
   const ONE_MINUTE_IN_MILLISECONDS = 60000; // 60 seconds in milliseconds
 
-  const filteredVideos = videos?.items?.filter((item) => {
+  const filteredVideos = videos.filter((video) => {
     const durationInMilliseconds = Duration.fromISO(
-      item.contentDetails.duration
+      video.video.contentDetails.duration
     ).as("milliseconds");
 
     return durationInMilliseconds >= ONE_MINUTE_IN_MILLISECONDS;

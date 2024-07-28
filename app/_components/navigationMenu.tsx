@@ -57,7 +57,7 @@ export default function NavigationMenu() {
             <div></div>
 
             <div>
-              <Heading as="h6" margin="0">
+              <Heading as="h6" margin="none">
                 Contact
               </Heading>
 

@@ -1,29 +1,5 @@
 import { cva } from "@/styled-system/css";
 
-interface Props {
-  content?: string;
-  children?: React.ReactNode;
-  margin?: string;
-  align?: string;
-  size?: string;
-}
-
-export default function Text({
-  as: Element = "p",
-  content,
-  children,
-  ...props
-}: Props) {
-  return content ? (
-    <Element
-      className={text({ ...props })}
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
-  ) : (
-    <Element className={text({ ...props })}>{children}</Element>
-  );
-}
-
 const text = cva({
   base: {
     color: "$midContrast",
@@ -54,7 +30,7 @@ const text = cva({
       justify: { textAlign: "justify" },
     },
     margin: {
-      0: { marginBottom: 0, "& p, & a, & span": { marginBottom: 0 } },
+      none: { marginBottom: 0, "& p, & a, & span": { marginBottom: 0 } },
       xs: { marginBottom: "$xs", "& p, & a, & span": { marginBottom: "$xs" } },
       sm: { marginBottom: "$sm" },
       md: { marginBottom: "$md" },
@@ -69,3 +45,33 @@ const text = cva({
     },
   },
 });
+
+interface Props {
+  as?: keyof JSX.IntrinsicElements;
+  children?: React.ReactNode;
+  content?: string;
+  margin?: "none" | "xs" | "sm" | "md" | "lg" | "xl";
+  align?: "left" | "center" | "right";
+  size?: "sm";
+}
+
+export default function Text({
+  as: Element = "p",
+  content,
+  children,
+  margin,
+  align,
+  size,
+  ...props
+}: Props) {
+  return content ? (
+    <Element
+      className={text({ margin, align, size, ...props })}
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
+  ) : (
+    <Element className={text({ margin, align, size, ...props })}>
+      {children}
+    </Element>
+  );
+}

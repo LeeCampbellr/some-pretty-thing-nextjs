@@ -2,11 +2,9 @@ import Image from "next/image";
 
 import { Post, PostProps } from "./_components/post";
 import PostcardsFrom from "./_components/postcardsFrom";
-import Youtube from "./_components/youtube";
 import HOME_QUERY from "./query";
 
 import { fetchCraftCMS } from "@/lib/craftcms";
-import { fetchYoutubeVideos, YoutubeVideoProps } from "@/lib/youtube";
 
 import { css } from "@/styled-system/css";
 import { AspectRatio, styled } from "@/styled-system/jsx";
@@ -20,7 +18,7 @@ import HeaderShadow from "@/images/header-shadow.png";
 
 export default async function Home() {
   const data = await fetchCraftCMS({ query: HOME_QUERY });
-  const videos = await fetchYoutubeVideos(3);
+  // const videos = await fetchYoutubeVideos(3);
 
   return (
     <>
@@ -42,7 +40,7 @@ export default async function Home() {
 
         <HeaderContent>
           <Container>
-            <Heading as="h1" align="center" margin="0">
+            <Heading as="h1" align="center" margin="none">
               <i>Intentional Living. Seasonal Inspiration</i>
             </Heading>
           </Container>
@@ -90,15 +88,15 @@ export default async function Home() {
 
       <PostcardsFrom />
 
-      <Container variant="section" align="center">
+      {/* <Container variant="section" align="center">
         <h6>Recent Youtube Videos</h6>
 
         <Grid columns={3} gap="md">
-          {videos.map((video: YoutubeVideoProps["video"], index: number) => {
-            return <Youtube video={video} key={index} />;
+          {videos.map((video: YoutubeVideoProps, index: number) => {
+            return <Youtube video={video.video} key={index} />;
           })}
         </Grid>
-      </Container>
+      </Container> */}
     </>
   );
 }

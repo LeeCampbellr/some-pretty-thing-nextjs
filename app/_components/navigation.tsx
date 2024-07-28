@@ -56,7 +56,7 @@ export default function Navigation({ theme }: Props) {
             </SocialList>
           </ListItem>
 
-          <ListItem mobile="true">
+          <ListItem>
             <NavigationMenu />
           </ListItem>
         </List>

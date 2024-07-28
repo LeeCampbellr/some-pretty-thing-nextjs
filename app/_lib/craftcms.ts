@@ -1,7 +1,13 @@
 import { cache } from "react";
 
-const dedupedFetch = cache(async (serializedInit) => {
+const dedupedFetch = cache(async (serializedInit: string) => {
   const endpoint = process.env.CRAFTCMS_API_URL;
+
+  if (!endpoint) {
+    throw new Error(
+      "CRAFTCMS_API_URL is not defined in the environment variables"
+    );
+  }
 
   const response = await fetch(endpoint, JSON.parse(serializedInit));
 
@@ -36,7 +42,6 @@ export const fetchCraftCMS = async ({
         Authorization: `Bearer ${apiToken}`,
         "Content-Type": "application/json",
       },
-      method: "POST",
       body: JSON.stringify({ query: query, variables: variables }),
       next: { revalidate },
     })
