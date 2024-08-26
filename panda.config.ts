@@ -68,6 +68,13 @@ const globalCss = defineGlobalStyles({
     cursor: "pointer",
     color: "$midContrast",
   },
+
+  hr: {
+    width: "100%",
+    height: "1px",
+    border: "none",
+    backgroundColor: "$border",
+  },
 });
 
 export default defineConfig({

@@ -22,6 +22,7 @@ export default function RootLayout({
     <html lang="en" className={`${generalSans.variable}  ${denton.variable}`}>
       <Body>
         <Navigation theme="dark" />
+      
         {children}
         <Footer />
         <Noise />

@@ -12,6 +12,7 @@ interface Props {
 }
 
 export default function Navigation({ theme }: Props) {
+
   return (
     <Nav data-theme={theme}>
       <NavContent>
